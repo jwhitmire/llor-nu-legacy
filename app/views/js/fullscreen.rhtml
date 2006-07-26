@@ -1,0 +1,135 @@
+<div id="action_window">
+<div id="buildings_pane">
+	<%= render :partial => "render_scene",:locals=>{:squares=>@squares} %>
+</div>
+<div id="nav_pane">
+	<div id="secondary_nav">
+		<div id="left-end_">
+			<img id="left_end" src="/images/left_end.png" width="17" height="28" alt="" />
+		</div>
+		<div id="logout_">
+			<a href="/logout/"
+				onmouseover="changeImages('logout', '/images/logout-over.png'); return true;"
+				onmouseout="changeImages('logout', '/images/logout.png'); return true;"
+				onmousedown="changeImages('logout', '/images/logout-down.png'); return true;"
+				onmouseup="changeImages('logout', '/images/logout-over.png'); return true;">
+				<img name="logout" id="logout" src="/images/logout.png" width="51" height="28" border="0" alt="Logout" /></a>
+		</div>
+		<div id="settings_">
+			<a href="/settings/"
+				onmouseover="changeImages('settings', '/images/settings-over.png'); return true;"
+				onmouseout="changeImages('settings', '/images/settings.png'); return true;"
+				onmousedown="changeImages('settings', '/images/settings-down.png'); return true;"
+				onmouseup="changeImages('settings', '/images/settings-over.png'); return true;">
+				<img name="settings" id="settings" src="/images/settings.png" width="68" height="28" border="0" alt="Settings" /></a>
+		</div>
+		<div id="help_">
+			<a href="/help/"
+				onmouseover="changeImages('help', '/images/help-over.png'); return true;"
+				onmouseout="changeImages('help', '/images/help.png'); return true;"
+				onmousedown="changeImages('help', '/images/help-down.png'); return true;"
+				onmouseup="changeImages('help', '/images/help-over.png'); return true;">
+				<img name="help" id="help" src="/images/help.png" width="53" height="28" border="0" alt="Help" /></a>
+		</div>
+		<div id="forums_">
+			<a href="http://forums.llor.nu/"
+				onmouseover="changeImages('forums', '/images/forums-over.png'); return true;"
+				onmouseout="changeImages('forums', '/images/forums.png'); return true;"
+				onmousedown="changeImages('forums', '/images/forums-down.png'); return true;"
+				onmouseup="changeImages('forums', '/images/forums-over.png'); return true;">
+				<img name="forums" id="forums" src="/images/forums.png" width="57" height="28" border="0" alt="Forums" /></a>
+		</div>
+		<div id="right-end_">
+			<img id="right_end" src="/images/right_end.png" width="21" height="28" alt="" />
+		</div>		
+	</div>
+	<div id="main_nav">
+		<div id="end-cap_">
+			<img id="end_cap" src="/images/end_cap.png" width="14" height="59" alt="" />
+		</div>
+		<div id="buildings_">	
+			<a href="/buildings/"
+				onmouseover="changeImages('buildings', '/images/buildings-over.png'); return true;"
+				onmouseout="changeImages('buildings', '/images/buildings.png'); return true;"
+				onmousedown="changeImages('buildings', '/images/buildings-down.png'); return true;"
+				onmouseup="changeImages('buildings', '/images/buildings-over.png'); return true;">
+				<img name="buildings" id="buildings" src="/images/buildings.png" width="56" height="59" border="0" alt="Manage Buildings" /></a>
+		</div>
+		<div id="scores_">
+				<a href="/scores/"
+					onmouseover="changeImages('scores', '/images/scores-over.png'); return true;"
+					onmouseout="changeImages('scores', '/images/scores.png'); return true;"
+					onmousedown="changeImages('scores', '/images/scores-down.png'); return true;"
+					onmouseup="changeImages('scores', '/images/scores-over.png'); return true;">
+					<img name="scores" id="scores" src="/images/scores.png" width="63" height="59" border="0" alt="Player Scores" /></a>
+			</div>
+		<div id="payments_">
+			<a href="/payments/"
+				onmouseover="changeImages('payments', '/images/payments-over.png'); return true;"
+				onmouseout="changeImages('payments', '/images/payments.png'); return true;"
+				onmousedown="changeImages('payments', '/images/payments-down.png'); return true;"
+				onmouseup="changeImages('payments', '/images/payments-over.png'); return true;">
+				<img name="payments" id="payments" src="/images/payments.png" width="67" height="59" border="0" alt="Payment Logs" /></a>
+		</div>
+		<div id="bank_">
+			<a href="/bank/"
+				onmouseover="changeImages('bank', '/images/bank-over.png'); return true;"
+				onmouseout="changeImages('bank', '/images/bank.png'); return true;"
+				onmousedown="changeImages('bank', '/images/bank-down.png'); return true;"
+				onmouseup="changeImages('bank', '/images/bank-over.png'); return true;">
+				<img name="bank" id="bank" src="/images/bank.png" width="66" height="59" border="0" alt="Bank" /></a>
+		</div>		
+	</div>
+	<div id="status_area">
+			<div id="roll_nav">
+				<% number = @session[:roll] || 5 -%>
+				<% if @user.account.balance > 0 -%>
+				<div id="die"><a href="#" onclick="roll();"><img src="/images/<%= number %>.gif" width="49" height="44" border="0" alt="Roll" /></a></div>
+				<% end -%>
+
+				<div id="funds_">
+					<img id="funds" src="/images/funds.png" width="217" height="44" alt="" />
+				</div>
+				<div id="space_">
+	
+				</div>
+				<div id="roll-status_">
+					<img id="roll_status" src="/images/roll_status.png" width="217" height="34" alt="" />
+				</div>
+
+				<div id="rolling_dice" style="display:none;">
+					<img src="/images/rolling_dice.gif" width="49" height="44" border="0" alt="Roll" />
+				</div>
+
+				<div id="rolling" style="display:none;">Rolling...</div>
+				<div id="roll"></div>
+
+				<div id="fund_text">
+						<% if @user.account.balance <= 0 %>
+							You're broke!
+						<% else %>
+							<%= number_with_delimiter(@user.account.balance) %>
+						<% end %>		
+				</div>				
+			</div>
+			<div id="messages"><%= render :partial => "messages" %></div>
+	</div>
+</div>
+<%= start_bubble_wrap("light_blue","black","nohome") %>
+	<p>
+	    Stuff that has no home in the interface yet:<br />
+        <a href="/inventory/">Inventory</a>
+        <a href="/messages/">Messages</a>
+        <a href="/stats/">Game Stats</a><br />		
+        <a href="http://forums.llor.nu/topic/show/301">Revision 271</a> notes.<br />
+    </p>
+    <p>
+        <b>Latest from Michael</b><br />
+        <% if @god_message %>
+            <%= @god_message.message %>
+        <% end %>
+    </p>
+    <% if @user %>
+        <p>Currently playing with <%= number_with_delimiter(@user.class.currently_playing) %> other users.</p>
+    <% end %>
+<%= end_bubble_wrap("light_blue","black") %>

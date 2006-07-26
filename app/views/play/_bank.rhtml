@@ -1,0 +1,11 @@
+<div id="container">
+    <div id="action_pane">	
+    	<%= start_bubble_wrap("blue","black") %>Bank<%= end_bubble_wrap("blue","black") %>
+    	<%= start_bubble_wrap("light_blue","black") %>
+            <p>You have <%= number_with_delimiter(@user.user_instance.account.balance) %> cash.</p>
+    	<%= end_bubble_wrap("light_blue","black") %>
+    </div>
+</div>
+<div id="nav_pane">
+	<%= render :partial => 'non_scroll_nav' %>
+</div>

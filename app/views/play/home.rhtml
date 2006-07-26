@@ -1,0 +1,30 @@
+<div id="container">
+<div id="action_pane">	
+	<%= start_bubble_wrap("blue","black") %>Welcome<%= end_bubble_wrap("blue","black") %>
+	<% status = true %>
+	<%= start_bubble_wrap("light_blue","black") %>
+	    <%= start_bubble_wrap("pink","light_blue") %><b>Beta Status:</b> Open<%= end_bubble_wrap("pink","light_blue") %>
+			<% if status %>		
+				<table><tr><td><img src="/images/sample.png" width="280" height="144" alt="Screen Shot" /></td><td><a href="join"><img src="/images/join.png" width="178" height="145" alt="Join" border="0" /></a></td></tr></table>
+			<% else %>
+				<table><tr><td><img src="/images/sample.png" width="280" height="144" alt="Screen Shot" /></td><td><img src="/images/closed.png" width="178" height="145" alt="Join" border="0" /></td></tr></table>
+			<% end %>
+			<p><b>Signups are Open!</b><br />
+			We've done a lot of testing, and have decided to open up again. This will probably be the last time during beta testing, so <a href="join">come on in</a> and have fun!</p>
+			<p><b>About the game</b><br />
+			    Check out the <%= link_to "About",:action => 'about' %> page, browse the <a href="http://forums.llor.nu">forums</a> and <a href="http://blog.llor.nu/">blog</a>, or view the <%= link_to "game help",:controller => 'help' %> to get a sense of what this game is.
+			</p>
+			
+			<p><b>Current Browser Requirements</b><br />
+			The game has been tested on the latest versions of <a href="http://www.mozilla.com/firefox/">Firefox</a> and Safari. It probably has some issues with IE 5 and IE 6.</p>
+			<p><a href="http://www.mozilla.com/firefox/">Firefox</a> is highly recommended and free.</p>
+			<p><a href="http://www.mozilla.com/firefox/"><img style="padding-right: 2px;" src="http://sfx-images.mozilla.org/affiliates/Buttons/110x32/get.gif" /></a></p>			
+	<%= end_bubble_wrap("light_blue","black") %>
+</div>
+</div>
+
+<div id="nav_pane">
+	<div id="info">
+		<%= start_bubble_wrap("blue","black") %><p>llor.nu is a simple board game you can play in your spare time.</p><%= end_bubble_wrap("blue","black") %>
+	</div>
+</div>

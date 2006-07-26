@@ -1,0 +1,68 @@
+<?xml version="1.0"?>
+<response>
+	<player>
+		<id><%= @user.id %></id>
+		<name><%= @user.name.gsub(/&/,"&amp;") %></name>
+		<account>
+			<balance><%= @user.account.balance %></balance>
+		</account>
+		<square>
+			<id><%= @user.square.id %></id>
+			<type>
+				<id><%= @user.square.square_type.id %></id>
+				<title><%= @user.square.square_type.description %></title>
+			</type>
+			<% if @user.square.deed %>
+			<deed>
+				<id><%= @user.square.deed.id %></id>
+				<name><%= @user.square.deed.name.gsub(/&/,"&amp;") || @user.square.deed.property_type.title %></name>
+				<levels><%= @user.square.deed.levels %></levels>
+				<type>
+					<id><%= @user.square.deed.property_type.id %></id>
+					<title><%= @user.square.deed.property_type.title %></title>
+				</type>
+				<owner>
+					<id><%= @user.square.deed.user.id %></id>
+					<name><%= @user.square.deed.user.name.gsub(/&/,"&amp;") %></name>
+				</owner>				
+			</deed>
+			<% end %>
+		</square>
+		<message>
+			<type-id>1</type-id>
+			<text>The results of the move show up here.</text>
+		</message>
+	</player>
+	<% if @other_users %>
+	<nearby-players>
+		<% @other_users.each do |user| %>
+			<player>
+				<id><%= user.id %></id>
+				<name><%= user.name.gsub(/&/,"&amp;") %></name>				
+				<square>
+					<id><%= user.square.id %></id>
+					<type>
+						<id><%= user.square.square_type.id %></id>
+						<title><%= user.square.square_type.description %></title>
+					</type>
+					<% if user.square.deed %>
+					<deed>
+						<id><%= user.square.deed.id %></id>
+						<name><%= user.square.deed.name.gsub(/&/,"&amp;") || user.square.deed.property_type.title %></name>
+						<levels><% user.square.deed.levels %></levels>
+						<type>
+							<id><%= user.square.deed.property_type.id %></id>
+							<title><%= user.square.deed.property_type.title %></title>
+						</type>
+						<owner>
+							<id><%= user.square.deed.user.id %></id>
+							<name><%= user.square.deed.user.name.gsub(/&/,"&amp;") %></name>
+						</owner>				
+					</deed>
+					<% end %>
+				</square>				
+			</player>
+		<% end %>		
+	</nearby-players>
+	<% end %>
+</response>

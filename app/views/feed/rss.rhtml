@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet type="application/rss+xml" href="http://de.wikipedia.org/style/feed.css"?>
+<feed version="0.3" xml:lang="de" xmlns="http://purl.org/atom/ns#">
+  <title>New Posts</title>
+  <link href="http://forums.llor.nu/forum/forum/1" rel="alternate" type="text/html"/>
+
+	<% @activity.compact.each do |event| %>	
+				<entry>
+					<id>tag:llornu,<%= event.created_on.getgm.strftime('%Y-%m-%d') + ':' + event.id.to_s %></id>
+					<title><%= payment_text(event) %></title>
+					<author>
+      				<name>llor.nu</name>
+					</author>
+					<link rel="alternate" type="text/html" href="http://llor.nu/"/>
+					<created><%= event.created_on.getgm.strftime('%Y-%m-%dT%H:%M:%SZ') %></created>
+					<issued><%= event.created_on.getgm.strftime('%Y-%m-%dT%H:%M:%SZ') %></issued>
+					<modified><%= event.created_on.getgm.strftime('%Y-%m-%dT%H:%M:%SZ') %></modified>
+				</entry>
+		<% end %>
+		<modified><%= Time.now.getgm.strftime('%Y-%m-%dT%H:%M:%SZ') %></modified>
+</feed>

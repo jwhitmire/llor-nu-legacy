@@ -1,0 +1,6 @@
+<% if @user.account.balance > 0 %>
+<% @session[:last_last_roll] = @last_roll %>
+<% @session[:roll] = Dice.roll %>
+<% number = @last_roll || 5 %>
+<%= link_to_remote "<img src=\"/images/#{number}.gif\" width=\"49\" height=\"44\" border=\"0\" alt=\"Roll\" />", :update => "buildings_pane", :loading => "scroll(#{@session[:roll]});", :complete => "end_scroll();", :url => {:action=> 'scroll'} %>
+<% end %>

@@ -1,0 +1,53 @@
+<div id="container">
+<div id="action_pane">	
+	<%= start_bubble_wrap("blue","black") %>Inventory Help<%= end_bubble_wrap("blue","black") %>	
+	<%= start_bubble_wrap("light_blue","black") %>
+	<div>
+	    <b>Items</b>
+	    <p>
+	    On every roll you have the chance of finding one of two special items that can be used to your advantage as you play.
+	    </p>
+	    <p>Items with blue backgrounds are "passive" items, meaning they can't be used on your current turn, but apply to the next turn. Items with grey backgrounds are "active" items, meaning they can only be used on your current turn.</p>
+	    <p>To activate a passive item, drag the item to the empty blue square on the inventory bar. To activate an active item, drag it to the empty grey square on the inventory bar.</p>
+	    <p>To deactive a passive item, hover over the icon in the upper left corner of your screen and click on the red x overlay.</p>
+	</div>
+	<div style="margin-top:30px;">
+	<b>Key:</b>
+	<div class="item">
+		<table>
+			<tr>
+				<td style="width:48px;" align="left" valign="top"><img src="/images/item_1.png" width="48" height="48" alt="Persuasive Duck" /></td>
+				<td style="width:368px;">
+					<h3>Persuasive Duck</h3>
+					Passive (gets used on your next roll)<br />
+					The Persuasive Duck is an important ally in your adventures. Whenever you land on a hotel, the duck helps you charm the hotel clerks into giving you a discount. But use it wisely, Persuasive Ducks run out of uses.
+					</p>
+					<p style="margin-bottom:20px;"><b>Odds of Finding:</b> 1 in 40</p>
+				</td>
+			</tr>
+			<tr>
+				<td style="width:48px;" align="left" valign="top"><img src="/images/item_2.png" width="48" height="48" alt="Helmet of Seriousness" /></td>
+				<td style="width:368px;">				    
+					<h3>Helmet of Seriousness</h3>
+					<p>
+					Active (applied on your current turn)<br />
+					This one is nasty. When used, it destroys a random number of levels on whatever building you're on (2 levels and up) and pays you to do it. The amount of money you get paid is greater depending on how many levels you destroy.
+					</p>
+					<p>The owner of the building gets a single game credit in addition to the insult of losing levels.</p>
+					<p><b>Odds of Finding:</b> 1 in 200</p>
+				</td>
+			</tr>
+		</table>
+	</div>
+	<p>More special items coming soon.</p>
+	</div>
+	
+	<%= end_bubble_wrap("light_blue","black") %>
+</div>
+</div>
+<div id="nav_pane">
+	<%= render :partial => 'play/non_scroll_nav' %>
+</div>
+
+
+                                                                                

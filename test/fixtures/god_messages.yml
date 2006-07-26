@@ -1,0 +1,5 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+first_god_message:
+  id: 1
+another_god_message:
+  id: 2

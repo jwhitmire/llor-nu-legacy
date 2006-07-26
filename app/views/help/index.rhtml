@@ -1,0 +1,47 @@
+<div id="container">
+<div id="action_pane">	
+	<%= start_bubble_wrap("blue","black") %>Game Help<%= end_bubble_wrap("blue","black") %>
+	
+	<%= start_bubble_wrap("light_blue","black") %>
+		<p>
+			<b style="color:#F13497;">Object of the Game</b><br />
+			The object of the game is to try and become the player with the <a href="/scores/">highest net worth.</a> There is one primary way of doing this: buying hotels and waiting for other players to land on them, paying you rent.	
+		</p>
+		<p>
+			<b style="color:#F13497;">Playing the Game</b><br />
+			Simply click on the die to determine your next position. You will never run out of turns, but if you have a streak of bad luck, you may run out of money.
+		<p>
+		<p>
+		The game bank will give you a daily allowance, but most of your money will come from other players paying you rent. If you run out of money, you can wait for a while.
+		</p>
+		<p>
+			You may also run across special properties where you can win money, or you may simply find money on the ground at random locations. Be careful though - you may also get fined at random locations.
+		</p>
+		<p>
+			<b style="color:#F13497;">Special Items</b><br />
+			You may run across items with special properties. These will end up in your inventory, and usually you'll be able to use them whenever you want. Some last forever, some only last for a few uses.
+		</p>
+		<p>
+			<b style="color:#F13497;">Buying Hotels</b><br />
+			In the game, the only way to buy a hotel is to land on an empty, buildable, square. Once you've landed on a square, if you have enough funds you can purchase a building. From that point on, you'll be able to collect rent from other players who arrive at your building.
+		</p>
+		<p>
+			<b style="color:#F13497;">Upgrading Hotels</b><br />
+			You can add new levels to a hotel after purchasing it, but you will never be able to change the type of hotel. You can also downgrade the size of your building and get some cash back.
+		<p>
+		<p>
+			<b style="color:#F13497;">Hotels Decay</b><br />
+			Over time, your hotel will decay. The price of rent will remain the same, but if you don't pay maintenance fees, your hotel will crumble, leaving a buyable space on the board. You won't get any refund for a decayed building. Maintenance costs are low, but they require you look at each building and pay a few.
+		</p>
+		<p>
+			<b style="color:#F13497;">More Help</b><br />
+			You can find more answers to common questions in the <a href="http://forums.llor.nu/">game forums.</a> The forums are also a place where you can request features, report bugs, or simply chat with other players.
+		</p>
+	<%= end_bubble_wrap("light_blue","black") %>
+</div>
+</div>
+<% if @session[:user] %>
+<div id="nav_pane">    
+	<%= render :partial => 'play/non_scroll_nav' %>	
+</div>
+<% end %>

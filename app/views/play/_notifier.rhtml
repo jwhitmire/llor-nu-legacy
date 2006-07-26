@@ -1,0 +1,11 @@
+<% if @notifier_flag == 1 %>
+<div id="content">
+	<table style="width:280px;">
+		<tr>
+			<td><img src="/images/dot.gif" style="height:68px;width:1px;"></td>
+			<td style="text-align:center;"><%= @payor %> just paid you <%= @amount %> in rent.</td>
+		</tr>
+	</table>
+</div>
+<div><img src="/images/notifier_cap.png" height="8" width="329" border="0"></div>
+<% end %>

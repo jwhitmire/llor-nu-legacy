@@ -1,0 +1,17 @@
+<html>
+    <head>
+        <title>llor.nu</title>
+        <%= stylesheet_link_tag 'basic' %>
+        <%= stylesheet_link_tag 'bubble_wrap' %>
+        <%= javascript_include_tag "prototype" %>
+        <script src="/javascripts/util.js?<%= rand(9999999) %>" type="text/javascript"></script>
+        <%= javascript_include_tag "scriptaculous" %>
+        <script src="/javascripts/custom.js?<%= rand(9999999) %>" type="text/javascript"></script>
+        <script src="/javascripts/clean_moves_car.js?<%= rand(9999999) %>" type="text/javascript"></script>
+        <script src="/javascripts/render.js?<%= rand(9999999) %>" type="text/javascript"></script>
+    </head>
+    <body onload="preloadImages();" bgcolor="black">
+    <%= render :partial => 'play/title_bar' %>
+    <div id="x"><%= @content_for_layout %></div>
+    </body>
+</html>

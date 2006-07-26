@@ -1,0 +1,8 @@
+<div id ="fade_me">
+		<% if @deed.name %>
+			<b><%=h @deed.name %></b>
+		<% else %>
+			<b><%= @deed.property_type.title %></b>
+		<% end %>
+		<%= link_to_remote "Edit", :update=> "building_title",:loading => "building_title();", :complete => "document.getElementById('deed_name').select();", :url => {:action => "edit_building_title", :id => @deed.id} %>
+</div>

@@ -1,0 +1,45 @@
+<div id="container">
+    <div id="action_pane">
+    	<%= start_bubble_wrap("blue","black") %>
+    	    Messages
+    	<%= end_bubble_wrap("blue","black") %>
+	
+    	<%= start_bubble_wrap("light_blue","black") %>
+	
+            <%= start_bubble_wrap("scarlet","light_blue") %>
+                <b><%= link_to "View All", :action=>"messages" %></b> or <b><%= link_to "Just this square", :action=>"messages", :id => @user.square.id %></b>
+            <%= end_bubble_wrap("scarlet","light_blue") %>
+
+            <%= start_bubble_wrap("pink","light_blue") %>
+                <%= form_remote_tag :update => "live_messages",:loading=> "new Effect.Appear('sending_message')",:complete => "$('message_input').value='';new Effect.Fade('sending_message')", :url => {:action => "drop_message"} %>
+                    <textarea id="message_input" name="message" style="width:100%;height:40px;"></textarea><br />
+					<input type="submit" value="Submit">
+                    <div id="sending_message" style="display:none;"><img src="/images/spinner.gif" width="18" height="18" alt="spinner" /> Sending message...</div>
+                    <% if params[:id] %>
+                    <input type="hidden" name="id" value="<%= params[:id] %>">
+                    <% end %>						
+                </form>
+            <%= end_bubble_wrap("pink","light_blue") %>
+				
+            <%= start_bubble_wrap("pink","light_blue") %>
+                <div id="live_messages">						
+                    <% if @messages.size > 0 %>
+                        <%= render :partial => "live_messages" %>
+                    <% else %>
+                        No messages yet. Be the first!
+                    <% end %>
+                </div>
+            <%= end_bubble_wrap("pink","light_blue") %>
+
+        	<% if @message_pages.items_per_page < @message_pages.item_count %>
+        	    <%= start_bubble_wrap("scarlet","light_blue") %>
+        				<b>Pages: <%= pagination_links(@message_pages) %></b>
+        		<%= end_bubble_wrap("scarlet","light_blue") %>
+        	<% end %>
+				
+    	<%= end_bubble_wrap("light_blue","black") %>
+    </div>
+</div>
+<div id="nav_pane">
+	<%= render :partial => 'non_scroll_nav' %>	
+</div>

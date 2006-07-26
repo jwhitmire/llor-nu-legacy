@@ -1,0 +1,9 @@
+<% if @square.deed %>
+	<a type="2 <%= @square.deed.levels %>" href="#" onmouseover="bubbleShow('<%= @square.id %>');" onmouseout="bubbleHide('<%= @square.id %>');"><img id="upd" src="/images/sprites/<%= @square.deed.property_type.id %>/<%= @square.deed.levels %>.png" width="65" height="255" border="0" /></a>	
+<% elsif @square.square_type.id == 5 %>
+	<a type="5" href="#" onmouseover="bubbleShow('<%= @square.id %>');" onmouseout="bubbleHide('<%= @square.id %>');"><img id="upd" src="/images/sprites/quicky.png" width="65" height="255" border="0" /></a>
+<% elsif @square.square_type.id == 3 %>
+	<a type="3" href="#" onmouseover="bubbleShow('<%= @square.id %>');" onmouseout="bubbleHide('<%= @square.id %>');"><img id="upd" src="/images/sprites/sale.png" width="65" height="255" border="0" /></a>
+<% else %>
+	<a type="1" href="#" onmouseover="bubbleShow('<%= @square.id %>');" onmouseout="bubbleHide('<%= @square.id %>');"><img id="upd" src="/images/sprites/square.png" width="65" height="255" border="0" /></a>
+<% end %>

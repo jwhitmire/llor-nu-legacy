@@ -1,0 +1,94 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+newguy:
+  id: 1
+  firstname: new
+  lastname: guy
+  login: newguy
+  name: newguy
+  salted_password: bd4ad651c26fae7ca93141181966cb6090010d6c # atest
+  salt: b8a4d1cadb02caf765232b1b91cc497657672ad3
+  email: newguy@aol.com
+  verified: true
+  deleted: false
+ 
+josh:
+  id: 2
+  firstname: Josh
+  lastname: Goebel
+  login: josh
+  salted_password: bd4ad651c26fae7ca93141181966cb6090010d6c # atest
+  salt: b8a4d1cadb02caf765232b1b91cc497657672ad3
+  email: josh@topsecret.gov
+  verified: true
+  role: admin
+
+bob:
+  id: 1000001
+  login: bob
+  name: bob
+  firstname: bob
+  lastname: bob
+  salted_password: bd4ad651c26fae7ca93141181966cb6090010d6c  # atest
+  salt: b8a4d1cadb02caf765232b1b91cc497657672ad3
+  email: bob@test.com
+  verified: true
+  square_id: 3
+
+existingbob:
+  id: 1000002
+  login: existingbob
+  firstname: existing
+  lastname: bobbob
+  name: exist
+  salted_password: bd4ad651c26fae7ca93141181966cb6090010d6c # atest
+  salt: b8a4d1cadb02caf765232b1b91cc497657672ad3
+  email: existingbob@test.com
+  verified: true
+  square_id: 2
+
+longbob:
+  id: 1000003
+  login: longbob
+  name: longlong
+  firstname: long
+  lastname: bobbob
+  salted_password: c841391e1d29100a4920de7a8fbb4b0fd180c6c0 # alongtest
+  salt: c068e3671780f16898c0a8295ae8d82cc59713e2
+  email: longbob@test.com
+  verified: true
+  deleted: false
+  square_id: 1
+
+deletebob1:
+  id: 1000004
+  login: deletebob1
+  name: deletey
+  firstname: delete
+  lastname: bobbob
+  salted_password: c841391e1d29100a4920de7a8fbb4b0fd180c6c0 # alongtest
+  salt: c068e3671780f16898c0a8295ae8d82cc59713e2
+  email: deletebob1@test.com
+  verified: true
+
+deletebob2:
+  id: 1000005
+  login: deletebob2
+  name: deletey2
+  firstname: delete
+  lastname: bobbob2
+  salted_password: c841391e1d29100a4920de7a8fbb4b0fd180c6c0 # alongtest
+  salt: c068e3671780f16898c0a8295ae8d82cc59713e2
+  email: deletebob2@test.com
+  verified: true
+new_player:
+  id: 2000
+  login: newb
+  name: newb
+  firstname: newb
+  lastname: smith
+  salted_password: bd4ad651c26fae7ca93141181966cb6090010d6c  # atest
+  salt: b8a4d1cadb02caf765232b1b91cc497657672ad3
+  email: newb@test.com
+  verified: 0
+

@@ -1,0 +1,60 @@
+<html>
+<head>
+  <title>llor.nu</title>
+  <link href="/stylesheets/basic.css" media="screen" rel="Stylesheet" type="text/css" />
+	<script src="/javascripts/prototype.js" type="text/javascript"></script>
+   <script src="/javascripts/effects.js" type="text/javascript"></script>
+	<script src="/javascripts/custom.js" type="text/javascript"></script>
+</head>
+<body onload="preloadImages();" bgcolor="black">
+	
+		<div style="position:absolute; left:10px; top:30px; width:769px; height:56px;">
+	<div style="position:absolute; left:0px; top:0px; width:140px; height:56px;">
+		<a href="/">
+			<img id="llor_nu" src="/images/in/llor.nu.png" width="140" height="56" border="0" alt="" /></a>
+	</div>
+	<div style="position:absolute; left:140px; top:0px; width:480px; height:56px;">
+		<img id="tag_line" src="/images/in/tag_line.png" width="480" height="56" alt="" />
+	</div>
+	<div style="position:absolute; left:620px; top:0px; width:73px; height:56px;">
+		<a href="/play/">
+			<img id="play_button" src="/images/in/play_button.png" width="73" height="56" border="0" alt="" /></a>
+	</div>
+	<div style="position:absolute; left:693px; top:0px; width:76px; height:56px;">
+		<a href="http://blog.llor.nu">
+			<img id="blog_button" src="/images/in/blog_button.png" width="76" height="56" border="0" alt="" /></a>
+	</div>
+</div>
+	
+<div id="action_window">
+
+
+<div id="action_pane">	
+	<div class="blueRoundedDiv">
+		<div class="blueHeader"><ul><li><img src="/images/dot.gif" height="8" width="1"></li></ul></div>
+			<div id="content">Error</div>
+		<div class="blueFooter"><ul><li><img src="/images/dot.gif" height="8" width="1"></li></ul></div>
+	</div>
+	
+	<div class="roundedDiv">
+		<div class="header"><ul><li><img src="/images/dot.gif" height="8" width="1"></li></ul></div>
+			<div id="content">
+			
+			<% if @exception %>			
+				<p>Some kind of weird error just occured.</p>				
+				<p>Try <a href="/logout/">logging out</a> to see if that fixes things. Maybe even twice. It's a weird game reset thing.</p>
+				
+				<p><%= @exception.message %></p>
+				<p>It's been emailed to the game admin.</p>
+			<% elsif @custom_error %>
+				<p><%= @custom_error %></p>
+			<% end %>			
+			</div>
+		<div class="footer"><ul><li><img src="/images/dot.gif" height="8" width="1"></li></ul></div>
+	</div>
+</div>
+
+</div>
+
+</body>
+</html>

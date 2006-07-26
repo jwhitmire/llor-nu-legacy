@@ -1,0 +1,37 @@
+<div id="container">
+<div id="action_pane">
+	<div class="blueRoundedDiv">
+		<div class="blueHeader"><ul><li><img src="/images/dot.gif" height="8" width="1"></li></ul></div>
+			<div id="content">Building Management</div>
+		<div class="blueFooter"><ul><li><img src="/images/dot.gif" height="8" width="1"></li></ul></div>
+	</div>
+	
+	<div class="roundedDiv">
+		<div class="header"><ul><li><img src="/images/dot.gif" height="8" width="1"></li></ul></div>
+			<div id="content">
+			<%= render :partial => 'building_details', :locals => { :deed => @deed } unless @deed.nil? %>
+			</table>
+		</div>
+		<div class="footer"><ul><li><img src="/images/dot.gif" height="8" width="1"></li></ul></div>
+	</div>	
+</div>
+</div>
+<div id="nav_pane">
+	<div id="secondary_nav"><%= render :partial => '/play/secondary_nav' %></div>
+	<div id="main_nav"><%= render :partial => '/play/main_nav' %></div>
+	<div id="roll_nav"><%= render :partial => '/play/non_ajax_roll_nav' %></div>
+	<div id="messages">
+		<div class="roundedDiv">
+			<div class="header"><ul><li><img src="/images/dot.gif" height="8" width="1"></li></ul></div>
+			<div id="content">
+				<p>Return to your <%= link_to "buildings", building_list_url %>.<br/>
+				Return to the <%= link_to "game", "/play/" %></p>
+			</div>
+			<div class="footer"><ul><li><img src="/images/dot.gif" height="8" width="1"></li></ul></div>
+		</div>
+	</div>
+</div>
+
+
+
+			

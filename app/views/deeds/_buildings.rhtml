@@ -1,0 +1,76 @@
+<div id="container">
+<div id="action_pane">
+	<%= start_bubble_wrap("blue","black") %>Building Management<%= end_bubble_wrap("blue","black") %>
+	
+	<%= start_bubble_wrap("light_blue","black") %>
+				<% if @building_pages.item_count == 0 -%>
+					<p>You don't yet own any buildings. When you land on a buyable square, trying buying one.</p>
+				<% else -%>
+				<p>You own <%= @building_pages.item_count %> buildings. Click on one to see more details.</p>
+				
+				<% if @building_pages.items_per_page < @building_pages.item_count -%>				
+				<%= start_bubble_wrap("scarlet","light_blue") %>
+					<% if @building_pages.current.previous %>
+						<%= link_to('<<', { :page => @building_pages.current.previous }) %>
+					<% else %>
+						<<
+					<% end %>
+					
+					<% @building_pages.page_count.times do |page| %>
+						<% if page+1 == params[:page].to_i %>
+							<%= page+1 %>
+						<% else %>
+							<%= link_to(page+1, {:page => page+1}) %>
+						<% end %>
+					<% end %>
+					
+					<% if @building_pages.current.next %>
+						<%= link_to('>>', { :page => @building_pages.current.next }) %>
+					<% else %>
+						>>
+					<% end %>
+				<%= end_bubble_wrap("scarlet","light_blue") %>
+				<% end -%>
+				
+				<table cellpadding="2" cellspacing="0" width="100%">
+					<tr>
+						<td colspan="2">&nbsp;</td>
+						<td><b><%= reorder_table 'Name' %>/<%= reorder_table 'Levels' %></b></td>
+						<td align="right"><b>Visits</b></td>
+						<td align="right"><b>Position</b></td>
+						<td align="right"><b>Rent</b></td>
+						<td align="right"><b><%= reorder_table 'Health' %></b></td>
+						<td align="center"><b>Msgs.</b></td>
+					</tr>
+				<% counter = 1 -%>
+				<% @buildings.each do |deed| -%>
+					<% if counter == 2 -%>
+					<tr>
+					<% else -%>
+					<tr style="background-color:#C9E5F2">
+					<% end -%>
+						<td>
+						<%= link_to image_tag(deed.property_type_id.to_s + "/icon.png", :size=>"33x33", :border =>0, :title=>deed.property_type.title), building_show_url(:id=>deed.id) %>
+						</td>
+						<td>x<%= deed.levels %></td>
+						<td><% if deed.name != nil %><%= deed.name %><% else %>&nbsp;<% end %></td>
+						<td align="right"><%= deed.landed_on %>
+						<td align="right"><%= deed.square.position %> / <%= number_with_precision(deed.square.percentage_position,2) %>%</td>
+						<td align="right"><%= deed.total_revenue %></td>						
+						<td align="right"><%= deed.health %></td>
+						<td align="center"><a href="/messages/<%= deed.square.id %>"><%= deed.square.messages_count %></a></td>
+					</tr>
+					<% if counter == 2 %>
+						<% counter = 1 %>
+					<% else %>
+						<% counter = 2 %>
+					<% end %>
+				<% end %>
+			</table>
+			<% end %>
+		<%= end_bubble_wrap("light_blue","black") %>
+</div>
+</div>
+<div id="nav_pane">
+	<%= render :partial => '/play/non_scroll_nav' %>	
+</div>

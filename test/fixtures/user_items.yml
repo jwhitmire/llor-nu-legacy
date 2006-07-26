@@ -1,0 +1,14 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+first_user_item:
+  id: 1
+  user_id: 1
+  active: false
+  item_id: 1
+  uses_left: 3
+  
+ducky_instance:
+  id: 2
+  user_id: 1
+  active: true
+  item_id: 1
+  uses_left: 2

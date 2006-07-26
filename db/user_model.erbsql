@@ -1,0 +1,18 @@
+CREATE TABLE users (
+  id <%= @pk %>,
+  login VARCHAR(80) NOT NULL,
+  salted_password VARCHAR(40) NOT NULL,
+  email VARCHAR(60) NOT NULL,
+  firstname VARCHAR(40) default NULL,
+  lastname VARCHAR(40) default NULL,
+  salt CHAR(40) NOT NULL,
+  verified INT default 0,
+  role VARCHAR(40) default NULL,
+  security_token CHAR(40) default NULL,
+  token_expiry <%= @datetime %> default NULL,
+  created_at <%= @datetime %> default NULL,
+  updated_at <%= @datetime %> default NULL,
+  logged_in_at <%= @datetime %> default NULL,
+  deleted INT default 0,
+  delete_after <%= @datetime %> default NULL
+) <%= @options %>;

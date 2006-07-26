@@ -1,0 +1,3 @@
+<% @users.each do |user| %>
+	<%= user.name %> moved <%= time_ago_in_words(user.updated_on) %> ago.<br />
+<% end %>

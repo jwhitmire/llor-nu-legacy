@@ -1,0 +1,113 @@
+<%= render :partial => "json", :locals=>{:squares => squares} %>
+<%
+if not session[:use_js_renderer]
+
+  top = @top || -75
+  left = @left || -33 
+  count = @count || 0 
+
+  pos_counter = squares.last.position + 1
+  empty_square = Square.new(:square_type_id => 1)
+  6.times do |i|
+	empty_square.position = pos_counter + i
+	squares += [empty_square.clone]
+  end
+  
+  squares.each do |square| -%>
+	<% count += 1 -%>
+	<% if square.deed -%>
+		<div class="squares" id="square_<%= square.position %>" style="top:<%= top %>px;left:<%= left %>px;"><a type="2 <%= square.deed.levels %>" href="#"><img src="/images/sprites/<%= square.deed.property_type_id %>/<%= square.deed.levels %>.png" width="65" height="255" /></a></div>
+	<% elsif square.square_type_id == 6 -%>
+		<div class="squares" id="square_<%= square.position %>" style="top:<%= top %>px;left:<%= left %>px;"><a type="6" href="#"><img src="/images/sprites/bank.png" width="65" height="255" /></a></div>
+	<% elsif square.square_type_id == 5 -%>
+		<div class="squares" id="square_<%= square.position %>" style="top:<%= top %>px;left:<%= left %>px;"><a type="5" href="#"><img src="/images/sprites/quicky.png" width="65" height="255" /></a></div>
+	<% elsif square.square_type_id == 3 -%>
+		<div class="squares" id="square_<%= square.position %>" style="top:<%= top %>px;left:<%= left %>px;"><a type="3" href="#"><img src="/images/sprites/sale.png" width="65" height="255" /></a></div>
+	<% else -%>
+		<div class="squares" id="square_<%= square.position %>" style="top:<%= top %>px;left:<%= left %>px;"><a type="1" href="#"><img src="/images/sprites/square.png" width="65" height="255" /></a></div>
+	<% end -%>
+	<div class="halo" id="halo<%= square.position %>" style="display:none; top:<%= top %>px;left:<%= left %>px;"><img src="/images/sprites/halo.png" width="65" height="255" /></div>
+	
+	
+	
+	<% if square.deed -%>
+		<div class="bubbles" id="bubble<%= square.position %>" style="display:none;">
+			<div id="content">
+				<table style="width:280px;">
+					<tr>
+						<td><img src="/images/dot.gif" style="height:68px;width:1px;"></td>
+						<td style="text-align:center;">
+							<% if square.deed.name -%>
+								<b><%=h sanitize(square.deed.name) %></b>
+							<% else -%>
+								<b><%= square.deed.property_type.title %></b>
+							<% end -%>
+							<br />Owned by: <%= square.deed.user.name %><br />
+							Rent: <%= rent_calc(square.deed.property_type,square.deed.levels)  %><br />
+							Position: <%= number_with_precision(square.percentage_position,2)  %>%
+						</td>
+					</tr>
+				</table>
+			</div>
+			<div><img src="/images/notifier_cap.png" height="8" width="329" ></div>
+		</div>
+	<% else -%>
+		<div class="bubbles" id="bubble<%= square.position %>" style="display:none;">
+			<div id="content">
+				<table style="width:280px;">
+					<tr>
+						<td><img src="/images/dot.gif" style="height:68px;width:1px;"></td>
+						<td style="text-align:center;">							
+							Position: <%= number_with_precision(square.percentage_position,2) %>%
+						</td>
+					</tr>
+				</table>
+			</div>
+			<div><img src="/images/notifier_cap.png" height="8" width="329" ></div>
+		</div>
+	<% end -%>
+	<% 
+	# this is some smart cheating
+	# this tells us (without another query) if a user has been here in the last 10 minutes
+	# and while not 100% accurate is good enough to show cars moving about
+	#
+	# if this is too busy (too many cars) the original tests should be added to the end with "and"
+	# this at least avoids DB calls if the cell isn't locked... and the cell will always
+	# be locked if there is recent activity
+
+	# if square.users.size > 1 or (square != @user.square and square.users.size >0) 
+	if square.locked?(@user) 
+	-%>
+<!-- how do we get the title to popup, too many overlapping images? -->
+	<div class="others" style="position:absolute;top:<%= top+280 %>px;left:<%= left-14 %>;"><a class="tool_tip" href="#" title="<%= square.users.collect { |u| u.name }.join ", " %>"><img src="/images/vehicles/odyssey_purple.png" width="52" height="35" title="<%= square.users.collect { |u| u.name }.join ", " %>" /></a></div>
+	<% end -%>
+	
+	<% top += 19 -%>
+	<% left += 38 -%>
+	
+<% end -%>
+<div id="avatar" style="position:absolute;top:200px;left:21px;"><img  src="/images/vehicles/odyssey.png" width="52" height="35" title="Honda Odyssey" /></div>
+
+
+
+
+<img style="position:absolute;" src="/images/map.gif" usemap="#halo_map">
+<map name="halo_map">
+<%
+x1 = 12
+y2 = 201
+squares.shift # remove the first square
+squares.each do |square|
+	if square.deeded? #or 1==1 -%>
+		<area shape="rect" onmouseover="bubbleShow('<%= square.position %>');" onmouseout="bubbleHide('<%= square.position %>')" coords="<%= x1 %>,0,<%= x1 + 33 %>,<%= y2 %>" href="#">		
+	<% else -%>
+		<area shape="rect" coords="<%= x1 %>,0,<%= x1 + 33 %>,<%= y2 %>" href="#">	
+	<% end -%>
+<%
+x1 += 38 
+y2 += 19
+#y2 =  355 if y2>355
+end -%>
+</map>
+<div id="active_item"><%= render :partial => "active_item" %></div>
+<% end # if not using js renderer %>

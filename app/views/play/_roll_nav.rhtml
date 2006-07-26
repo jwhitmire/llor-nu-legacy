@@ -1,0 +1,29 @@
+<div id="die">
+	<%= render :partial => "die" %>
+</div>
+
+<div id="funds_">
+	<img id="funds" src="/images/funds.png" width="217" height="44" alt="" />
+</div>
+<div id="space_">
+	
+</div>
+<div id="roll-status_">
+	<img id="roll_status" src="/images/roll_status.png" width="217" height="34" alt="" />
+</div>
+
+<div id="rolling_dice" style="display:none;">
+	<img src="/images/rolling_dice.gif" width="49" height="44" border="0" alt="Roll" />
+</div>
+
+<div id="rolling" style="display:none;"><%= render :partial => "rolling" %></div>
+<div id="roll"><%= render :partial => "roll" %></div>
+
+<div id="fund_text">
+		<% if @user.account.balance <= 0 %>
+			You're broke!
+		<% else %>
+			<%= display_balance %>
+		<% end %>		
+</div>
+

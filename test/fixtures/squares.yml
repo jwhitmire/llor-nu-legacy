@@ -1,0 +1,70 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+first_square:
+  id: 1
+  position: 1
+  deeds_count: 1
+  square_type_id: 2
+
+another_square:
+  id: 2
+  position: 2
+  deeds_count: 1
+  square_type_id: 2
+  
+3:
+  id: 3
+  position: 3
+  deeds_count: 1
+  square_type_id: 2
+
+4:
+  id: 4
+  position: 4
+  square_type_id: 1
+  
+5:
+  id: 5
+  position: 5
+  square_type_id: 5 #quicky
+
+6:
+  id: 6
+  position: 6
+  square_type_id: 3
+  
+7:
+  id: 7
+  position: 7
+  square_type_id: 3
+
+8:
+  id: 8
+  position: 8
+  square_type_id: 3
+
+9:
+  id: 9
+  position: 9
+  square_type_id: 1
+
+10:
+  id: 10
+  position: 10
+  square_type_id: 1
+  deeds_count: 1
+
+11:
+  id: 11
+  position: 11
+  square_type_id: 1
+  
+parkplace:
+  id: 12
+  position: 12
+  square_type_id: 0
+
+  
+boardwalk:
+  id: 13
+  position: 13
+  square_type_id: 1

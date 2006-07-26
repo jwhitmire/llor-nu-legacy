@@ -1,0 +1,26 @@
+<div id="die_">
+	
+</div>
+<div id="funds_">
+	<img id="funds" src="/images/funds.png" width="217" height="44" alt="" />
+</div>
+<div id="space_">
+	
+</div>
+<div id="roll-status_">
+	<img id="roll_status" src="/images/roll_status.png" width="217" height="34" alt="" />
+</div>
+
+<div id="rolling_dice" style="display:none;">
+	<img name="die" id="die" src="/images/rolling_dice.gif" width="49" height="44" border="0" alt="Roll" />
+</div>
+<div id="rdt" style="display:none;">Rolling...</div>
+<div id="fund_text"><%= display_balance %></div>
+
+<div id="roll_dice">
+	<div id="roll_status_text">
+		<% if @last_action == 'scroll'  %>
+			You rolled a <%= @last_roll %>
+		<% end %>
+	</div>
+</div>

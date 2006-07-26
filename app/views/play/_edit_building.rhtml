@@ -1,0 +1,8 @@
+<%= start_bubble_wrap("blue","black") %>Building Management<%= end_bubble_wrap("blue","black") %>
+<%= start_bubble_wrap("light_blue","black") %>
+    <div id="building_details"><%= render :partial => '/deeds/building_details', :locals=>{:deed=>@deed} %></div>
+<%= end_bubble_wrap("light_blue","black") %>
+
+<script>
+$('fund_text').innerHTML = '<%= display_balance %>';
+</script>

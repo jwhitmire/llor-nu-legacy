@@ -1,0 +1,1 @@
+<%= link_to_remote "Roll Dice", :update => "action_window", :loading => "scroll(#{@session[:roll]});", :url => {:action=> 'scroll'} %>

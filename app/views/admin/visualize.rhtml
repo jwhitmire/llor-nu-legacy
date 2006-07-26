@@ -1,0 +1,35 @@
+<script type="text/javascript" language="javascript" charset="utf-8">
+function info(id,position) {
+	$('square_info').innerHTML = 'id: ' + id + ' ' + 'position: ' + position;
+}
+</script>
+
+<% if false %>
+<%= csv_builder(@squares) %>
+<% end %>
+
+<% @squares.each do |square| %>
+	<% if square.deed %>
+		<% if square.deed.property_type.id == 1 %>
+			<div style="position:absolute;left:<%= (square.position * 6)-2 %>px;top:<%= 104 - (square.deed.levels * 5) %>px;margin-right:1px;"><a href="#" onmouseover="info('<%= square.id %>','<%= square.position %>')"><img style="background-color:#FF98D9;" src="/images/clear.png" width="5" height="<%= square.deed.levels * 5 %>" /></a></div>
+		<% elsif square.deed.property_type.id == 2 %>
+			<div style="position:absolute;left:<%= (square.position * 6)-2 %>px;top:<%= 104 - (square.deed.levels * 5) %>px;margin-right:1px;"><a href="#" onmouseover="info('<%= square.id %>','<%= square.position %>')"><img style="background-color:#8F5741;" src="/images/clear.png" width="5" height="<%= square.deed.levels * 5 %>" /></a></div>
+		<% elsif square.deed.property_type.id == 3 %>
+			<div style="position:absolute;left:<%= (square.position * 6)-2 %>px;top:<%= 104 - (square.deed.levels * 5) %>px;margin-right:1px;"><a href="#" onmouseover="info('<%= square.id %>','<%= square.position %>')"><img style="background-color:#7C8092;" src="/images/clear.png" width="5" height="<%= square.deed.levels * 5 %>" /></a></div>
+		<% elsif square.deed.property_type.id == 4 %>
+			<div style="position:absolute;left:<%= (square.position * 6)-2 %>px;top:<%= 104 - (square.deed.levels * 5) %>px;margin-right:1px;"><a href="#" onmouseover="info('<%= square.id %>','<%= square.position %>')"><img style="background-color:#5479B4;" src="/images/clear.png" width="5" height="<%= square.deed.levels * 5 %>" /></a></div>
+		<% end %>
+	<% else %>
+		<% if square.square_type.id == 5 %>
+			<div style="top:100px;left:<%= (square.position * 6)-2 %>px;position:absolute;margin-right:1px;"><a href="#" onmouseover="info('<%= square.id %>','<%= square.position %>')"><img style="background-color:#D0645E;" src="/images/clear.png" width="5" height="5" /></a></div>
+		<% elsif square.square_type.id == 3 %>
+			<div style="top:100px;left:<%= (square.position * 6)-2 %>px;position:absolute;margin-right:1px;"><a href="#" onmouseover="info('<%= square.id %>','<%= square.position %>')"><img style="background-color:#3B6C23;" src="/images/clear.png" width="5" height="5" /></a></div>
+		<% else %>
+			<div style="top:100px;left:<%= (square.position * 6)-2 %>px;position:absolute;margin-right:1px;"><a href="#" onmouseover="info('<%= square.id %>','<%= square.position %>')"><img style="background-color:#C4DF9B;" src="/images/clear.png" width="5" height="5" /></a></div>
+		<% end %>
+	<% end %>
+	<% if @user.square == square %><div style="top:106px;left:<%= (square.user.square.position * 6)-2 %>px;position:absolute;"><img style="background-color:#000;" src="/images/clear.png" width="5" height="5" /></div><% end %>
+<% end %>
+
+<div style="left:10px;top:115px;position:absolute;" id="square_info">x</div>
+

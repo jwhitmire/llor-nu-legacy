@@ -1,0 +1,22 @@
+	<%= start_bubble_wrap("light_blue","black") %>
+		<div id="actual_message"><%= session[:messages] %></div>
+	<%= end_bubble_wrap("light_blue","black") %>
+
+
+<%= start_bubble_wrap("light_blue","black") %>
+    <a href="/messages/<%= @user.square.id %>">Leave a message</a> on this square for the owner or others.
+ <%= end_bubble_wrap("light_blue","black") %>
+
+<script type="text/javascript" language="javascript" charset="utf-8">
+// <![CDATA[
+	old_position = <%= @user.square.position %>	
+	new Ajax.Updater('inventory', '/js/update_inventory_bar', {evalScripts:true});
+	new Ajax.Updater('active_item','/js/update_active_item', {evalScripts:true});
+	$('fund_text').innerHTML = '<%= display_balance %>';
+	$('roll').innerHTML = 'You rolled a <%= session[:roll] %>';
+	$('die').innerHTML = '<a href="#" onclick="roll();"><img src="/images/<%= session[:roll] %>.gif" width="49" height="44"  alt="Roll" /></a>'
+	dice_roll=<%= session[:roll] %>;
+// ]]>
+</script>
+
+

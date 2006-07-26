@@ -1,0 +1,48 @@
+<div id="container">
+<div id="action_pane">
+	<%= start_bubble_wrap("blue","black") %>
+	    Statistics
+	<%= end_bubble_wrap("blue","black") %>
+	
+	<%= start_bubble_wrap("light_blue","black") %>
+		<p>Yay! Some stats on the entire game. There's not much here, but it's a start. Can you think of anything else? Submit ideas to the <a href="http://dev.llor.nu/trac/newticket">ticket system</a>.</p>
+        <table>
+            <tr>
+                <td><b>Players</b></td>
+                <td><%= @players %></td>
+            </tr>
+            <tr>
+                <td><b>Buildings</b></td>
+                <td><%= @buildings %></td>
+            </tr>
+            <tr>
+                <td><b>Squares</b></td>
+                <td><%= @squares %></td>
+            </tr>
+            <tr>
+                <td>&nbsp;</td>
+                <td><%= @buyable %> buyable</td>
+            </tr>
+            <tr>
+                <td>&nbsp;</td>
+                <td><%= @built %> built</td>
+            </tr>
+            <tr>
+                <td>&nbsp;</td>
+                <td><%= @quickies %> quickies</td>
+            </tr>
+            <tr>
+                <td>&nbsp;</td>
+                <td><%= @empty %> empty</td>
+            </tr>
+             <tr>
+                <td><b>Total Cash</b></td>
+                <td><%= @cash %></td>
+            </tr>
+        </table>
+	<%= end_bubble_wrap("light_blue","black") %>
+</div>
+</div>
+<div id="nav_pane">
+	<%= render :partial => '/play/non_scroll_nav' %>	
+</div>

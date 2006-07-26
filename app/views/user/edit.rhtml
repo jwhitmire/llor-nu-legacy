@@ -1,0 +1,25 @@
+<div id="container">
+<div id="action_pane">	
+	<%= start_bubble_wrap("blue","black") %>
+	    Your Settings
+	<%= end_bubble_wrap("blue","black") %>
+	
+	<%= start_bubble_wrap("light_blue","black") %>
+		<div class="user_form">
+		<%= form_remote_tag :update => "settings", :loaded => "notifier()", :url => {:action => "save_settings"} %>
+			<div id="settings"><%= render :partial => "settings" %></div>
+		</form>
+		<%= form_remote_tag :update => "action_pane", :loaded => "notifier()", :url => {:action => "change_password"} %>
+			<span class="form_titles">New password:</span><br />
+			<%= password_field('user','password') %><br />
+			<span class="form_titles">Confirm new password:</span><br />
+			<%= password_field('user','password_confirmation') %><br />
+			<%= submit_tag "Change Password" %><br />
+		</form>
+		</div>
+	<%= end_bubble_wrap("light_blue","black") %>
+</div>
+</div>
+<div id="nav_pane">
+	<%= render :partial => 'play/non_scroll_nav' %>
+</div>

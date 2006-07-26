@@ -1,0 +1,11 @@
+id, event, description, created_on, updated_on
+1, Rent, A rent transaction, NULL, NULL
+2, Buy Building, Building purchase, NULL, NULL
+3, Paypal Fund Buy, Game funds purchased through Paypal, NULL, NULL
+4, Level Sell Back, Player sold a level from a building they owned., NULL, NULL
+5, Level Upgrade, Player bought a level upgrade., NULL, NULL
+6, Daily Bread, The daily allowance from the game., NULL, NULL
+7, Building Maintenance, Incremental or full building maintenance., NULL, NULL
+8, Paid Rent, Not sure, NULL, NULL
+9, Surprise 5000!, You found 5000!, NULL, NULL
+10, Lotto!, Lotto!, NULL, NULL

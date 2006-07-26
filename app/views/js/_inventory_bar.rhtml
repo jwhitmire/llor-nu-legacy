@@ -1,0 +1,36 @@
+<%= start_bubble_wrap("light_blue","black","inventory_wrapper") %>
+    <% if @user.user_instance.user_items %>       
+        <div style="float:left;text-align:center;width:48px;margin-right:5px;">
+        	<img id="next_target"  src="/images/target_next_turn.png" width="48" height="48" /><br />
+        	<span style="font-size:9pt;color:black;">Next</span>
+        </div>
+        	
+        <div id="this_target" style="float:left;text-align:center;width:48px;margin-right:20px;">
+            <img src="/images/target_this_turn.png" width="48" height="48" /><br />
+        	<span style="font-size:9pt;color:black;">Now</span>
+        </div>
+        <div id="bar_items" style="float:left;"><%= render :partial => 'bar_items' %></div>    
+     <% end %>
+     <div style="float:right;text-align:right;">
+        <span style="font-size:12pt;font-weight:bold;">Inventory</span><br />
+        <span style="font-size:12pt;"><%= link_to "Info", :controller => "inventory" %></span><br />
+        <span id="notice" style="display:none;font-size:12pt;"><img src="/images/spinner.gif" width="18" height="18" alt="spinner" /></span>
+    </div>
+     <div style="clear:both;"><% debug params %></div>
+<%= end_bubble_wrap("light_blue","black") %>
+
+<script type="text/javascript">Droppables.add('next_target', {accept:'passive_item',onDrop:function(element){new Ajax.Updater('inventory', '/js/item_activate', {onLoading:function(request){Effect.Appear('notice')}, onComplete:function(request){Effect.Fade('notice')}, parameters:'id=' + encodeURIComponent(element.id), evalScripts:true, asynchronous:true})}})</script>
+<script type="text/javascript">Droppables.add('this_target', {accept:'immediate_item',onDrop:function(element){new Ajax.Updater('inventory', '/js/immediate_item', {onLoading:function(request){Effect.Appear('notice')}, onComplete:function(request){Effect.Fade('notice')}, parameters:'id=' + encodeURIComponent(element.id), evalScripts:true, asynchronous:true})}})</script>
+
+<% if params[:action] == "item_activate" or params[:action] == "immediate_item" %>
+<script type="text/javascript" language="javascript" charset="utf-8">
+// <![CDATA[
+	new Ajax.Updater('messages', '/js/update_messages');
+	<% if @user.square.deed %>
+	$('square_<%= @user.square.position %>').innerHTML = '<a type="2 <%= @user.square.deed.levels %>" href="#"><img src="/images/sprites/<%= @user.square.deed.property_type_id %>/<%= @user.square.deed.levels %>.png" width="65" height="255" />'
+	<% end %>
+	new Ajax.Updater('fund_text', '/js/render_balance');
+	new Ajax.Updater('active_item','/js/update_active_item');
+// ]]>
+</script>
+<% end %>

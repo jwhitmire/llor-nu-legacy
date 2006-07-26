@@ -1,0 +1,6 @@
+production:
+  - localhost:11211
+development:
+  - localhost:11211
+test:
+  - localhost:11211

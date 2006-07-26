@@ -1,0 +1,340 @@
+
+/*** GLOBAL WINDOW SETTINGS ***/
+#buildings_pane {
+	position:absolute;
+	top:10px;
+	left:10px;
+	width:498px;
+	height:354px;
+	overflow:hidden;
+	z-index:0;
+	background-image: url('/images/bg.png');
+	background-position:0px 0px;	
+}
+
+#action_pane {
+	position:absolute;
+	top:10px;
+	left:10px;
+	width:497px;
+	height:340px;
+	z-index:0;
+}
+
+#action_pane P {
+	font-size:12pt;
+}
+
+#nav_pane {
+	position:absolute;
+	z-index:5;
+	left:514px;
+	top:10px;
+}
+
+/*** SECONDARY NAV ***/
+#secondary_nav {
+	position:absolute;
+	left:0px;
+	top:0px;
+	width:267px;
+	height:28px;
+}
+
+#left-end_ {
+	position:absolute;
+	left:0px;
+	top:0px;
+	width:17px;
+	height:28px;
+}
+
+#logout_ {
+	position:absolute;
+	left:17px;
+	top:0px;
+	width:51px;
+	height:28px;
+}
+
+#settings_ {
+	position:absolute;
+	left:68px;
+	top:0px;
+	width:68px;
+	height:28px;
+}
+
+#help_ {
+	position:absolute;
+	left:136px;
+	top:0px;
+	width:53px;
+	height:28px;
+}
+
+#forums_ {
+	position:absolute;
+	left:189px;
+	top:0px;
+	width:57px;
+	height:28px;
+}
+
+#right-end_ {
+	position:absolute;
+	left:246px;
+	top:0px;
+	width:21px;
+	height:28px;
+}
+
+/*** MAIN NAV ***/
+#main_nav {
+	position:absolute;
+	left:0px;
+	top:32px;
+	width:266px;
+	height:59px;
+}
+
+#end-cap_ {
+	position:absolute;
+	left:0px;
+	top:0px;
+	width:14px;
+	height:59px;
+}
+
+#buildings_ {
+	position:absolute;
+	left:14px;
+	top:0px;
+	width:56px;
+	height:59px;
+}
+
+#scores_ {
+	position:absolute;
+	left:70px;
+	top:0px;
+	width:63px;
+	height:59px;
+}
+
+#payments_ {
+	position:absolute;
+	left:133px;
+	top:0px;
+	width:67px;
+	height:59px;
+}
+
+#bank_ {
+	position:absolute;
+	left:200px;
+	top:0px;
+	width:66px;
+	height:59px;
+}
+
+/*** ROLL NAV ***/
+#roll_nav {
+	position:absolute;
+	left:0px;
+	top:95px;
+	width:266px;
+	height:78px;
+}
+
+#fund_text {
+	position:absolute;
+	left:47px;
+	top:10px;
+	width:210px;
+	height:44px;
+	text-align:right;	
+	font-family: Helvetica;
+	font-size: 16pt;
+	font-weight:bold;
+	color:white;
+}
+
+#roll_status_text {
+	position:absolute;
+	left:49px;
+	top:145px;
+	width:214px;
+	text-align:center;	
+	font-family: Helvetica;
+	font-size: 14pt;
+	font-weight:bold;
+	color:white;
+}
+
+#die_ {
+	position:absolute;
+	left:0px;
+	top:0px;
+	width:49px;
+	height:44px;
+}
+
+#funds_ {
+	position:absolute;
+	left:49px;
+	top:0px;
+	width:217px;
+	height:44px;
+}
+
+#space_ {
+	position:absolute;
+	left:0px;
+	top:44px;
+	width:49px;
+	height:34px;
+}
+
+#roll-status_ {
+	position:absolute;
+	left:49px;
+	top:44px;
+	width:217px;
+	height:34px;
+}
+
+
+#roll_dice {
+}
+
+#rolling_dice {
+	position:absolute;
+	left:0px;
+	top:0px;
+	width:49px;
+	height:44px;
+}
+
+
+#account_balance {
+	background-color:#66B241;
+	color:white;
+	margin:4px;
+	padding:10px;
+}
+
+#secondary_nav {
+}
+
+#roll_status_text {
+	position:absolute;
+	left:49px;
+	top:50px;
+	width:214px;
+	text-align:center;	
+	font-family: Helvetica;
+	font-size: 14pt;
+	font-weight:bold;
+	color:white;
+}
+
+#rdt {
+	position:absolute;
+	left:49px;
+	top:50px;
+	width:214px;
+	text-align:center;	
+	font-family: Helvetica;
+	font-size: 14pt;
+	font-weight:bold;
+	color:white;
+}
+
+/*** MESSAGES ***/
+#messages {
+	position:absolute;
+	left:0px;
+	top:177px;
+	width: 266px;
+}
+
+#messages a {
+	color:#AE0D57;
+}
+
+.roundedDiv {
+	background: #e8eef2;
+	color: #63678a;
+}
+
+.header ul {
+	background: url(/images/airtight.gif) -8px -8px no-repeat;
+	height: 8px;
+	list-style: none;
+	margin: 0px;
+}
+.header ul li {
+	float: right;
+	background: url(/images/airtight.gif) 0px -8px no-repeat;
+	width: 8px;
+	line-height: 8px;
+}
+.footer ul {
+	background: url(/images/airtight.gif) -8px 0px no-repeat;
+	height: 8px;
+	list-style: none;
+	margin: 0px;
+}
+.footer ul li {
+	float: right;
+	background: url(/images/airtight.gif) 0px 0px no-repeat;
+	width: 8px;
+	line-height: 7px;
+}
+#content {	
+	padding: 0 20px;
+	display: block;	
+	font-family: Helvetica;
+	font-size: 16pt;
+}
+ol li {
+	margin-bottom: 10px;
+}
+
+.blueRoundedDiv {
+	background: #858ca9;
+	color: #fff;
+	margin-bottom:6px;
+}
+
+.blueHeader ul {
+	background: url(/images/at_blue.png) -8px -8px no-repeat;
+	height: 8px;
+	list-style: none;
+	margin: 0px;
+}
+.blueHeader ul li {
+	float: right;
+	background: url(/images/at_blue.png) 0px -8px no-repeat;
+	width: 8px;
+	line-height: 8px;
+}
+.blueFooter ul {
+	background: url(/images/at_blue.png) -8px 0px no-repeat;
+	height: 8px;
+	list-style: none;
+	margin: 0px;
+}
+.blueFooter ul li {
+	float: right;
+	background: url(/images/at_blue.png) 0px 0px no-repeat;
+	width: 8px;
+	line-height: 7px;
+}
+
+#title {
+	padding:8px;
+	border-bottom:1px solid #dcdcdc;
+}
+

@@ -1,0 +1,84 @@
+<% top = -42 -%>
+<% left = -45 -%>
+<% counter = 0 -%>
+
+<div id="all_squares">	
+<% @squares.each do |square| %>	
+	<% if counter > 8 %>
+		<% display = 'none' %>
+	<% end %>
+	<% adjust = 38 %>
+	<% if square.deed %>	
+		<% offset = (adjust) - (200)+top %>
+	<% else %>
+		<% offset = top+58 %>
+	<% end -%>
+	<div id="sq<%= counter %>" style="position: absolute;top:<%= offset %>px;left:<%= left %>px;z-index:<%= counter %>">
+		<% if square.deed %>
+			<div style="position:absolute;top:119px;z-index:-100"><img src="/images/4/30.png" width="65" height="255" border="0" /></div>			
+		<% elsif square.square_type.id == 3 %>
+			<div style="position:absolute;top:119px;z-index:-100"><img src="/images/5/sale.gif" width="65" height="34" border="0" /></div>
+		<% elsif square.square_type.id == 5 %>
+			<div style="position:absolute;top:101px;z-index:-100"><img src="/images/quicky.png" width="65" height="53" border="0" /></div>
+		<% elsif square.square_type.id == 6 %>
+			<div style="position:absolute;top:94px;z-index:-100"><img src="/images/pirate.png" width="65" height="60" border="0" /></div>	
+		<% else %>
+			<div style="position:absolute;top:119px;z-index:-100"><img src="/images/5/empty.gif" width="65" height="34" border="0" /></div>			
+		<% end -%>		
+	</div>
+	
+	<% if square.deed %>
+		<div class="bubbles" id="bubble<%= counter %>" style="display:none;background-color:white;">
+				<div id="content">
+					<table style="width:280px;">
+						<tr>
+							<td><img src="/images/dot.gif" style="height:68px;width:1px;"></td>
+							<td style="text-align:center;">
+								<% if square.deed.name %>
+									<b><%= square.deed.name %></b>
+								<% else %>
+									<b><%= square.deed.property_type.title %></b>
+								<% end %>
+								<br />Owned by: <%= square.deed.user.name %><br />
+								Rent: <%= rent_calc(square.deed.property_type.id,square.deed.levels)  %><br />
+								Position: <%= square.position  %>
+							</td>
+						</tr>
+					</table>
+				</div>
+				<div><img src="/images/notifier_cap.png" height="8" width="329" border="0"></div>
+			</div>
+	<% end %>
+	
+	<% if false %>
+	<% if square.user and square.user.id != @session[:user][:id] %>
+		<div class="other_player" id="other_player<%= counter %>" style="display:none;background-color:white;">
+				<div id="content">
+					<table style="width:280px;">
+						<tr>
+							<td><img src="/images/dot.gif" style="height:68px;width:1px;"></td>
+							<td style="text-align:center;">
+								<%= square.user.name %>
+							</td>
+						</tr>
+					</table>
+				</div>
+				<div><img src="/images/notifier_cap.png" height="8" width="329" border="0"></div>
+			</div>
+	
+		<div id="player" style="position:absolute;top:<%= top + 200 %>px;left:<%= left - 26 %>px;"><a href="#" onmouseover="playerShow('other_player<%= counter %>')" onmouseout="playerHide('other_player<%= counter %>')"><img src="/images/vehicles/odyssey.png" width="52" height="35" border="0" alt="<%= square.user.name %>" /></a></div>		
+	<% end %>
+	<% end %>
+	
+	
+	<% top += 19 %>
+	<% left += 38 %>
+	<% counter += 1 %>
+				
+<% end -%>
+
+</div>
+<% if @active_item != nil %>
+<div id="active_item"><img src="/images/item_<%= @active_item.item.id %>.png" width="48" height="48" /></div>
+<% end %>
+<img id="place_marker" src="/images/place_marker.png" width="102" height="52" />

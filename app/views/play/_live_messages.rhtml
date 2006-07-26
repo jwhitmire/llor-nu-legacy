@@ -1,0 +1,16 @@
+
+<% @messages.each do |message| %>					
+	<div style="font-size:11pt;margin-top:10px;margin-bottom:4px;"><%= time_ago_in_words(message.created_on, true).capitalize %> ago <%= message.user.name %> said:</div>		
+		<div class="boxWonP">
+			<div class="boxWonP_header"><ul><li><img src="/images/dot.gif" height="8" width="1"></li></ul></div>
+			<div id="content">									
+				<div style="font-size:11pt;"><%=h sanitize(message.message) %></div>	
+			</div>
+			<div class="boxWonP_footer"><ul><li><img src="/images/dot.gif" height="8" width="1"></li></ul></div>
+		</div>
+		<% if message.square %>
+			<% if message.square.deed %>
+			<div style="font-size:11pt;margin-top:5px;color:#858CA9;text-align:right;">At <%= message.square.deed.user.name %>'s <% if message.square.deed.name %><%= message.square.deed.name %><% else %><%= message.square.deed.property_type.title %> at position <%= message.square.position %><% end %></div>
+			<% end %>
+		<% end %>							
+<% end %>

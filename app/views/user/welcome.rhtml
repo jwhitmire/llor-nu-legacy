@@ -1,0 +1,7 @@
+<div title="<%= title_helper %>" class="memo">
+  <%= head_helper :notice => false, :message => false %>
+  <p><%= message_helper 'now_logged_in' %></p>
+  <p><%= message_helper 'redirect' %></p>
+      
+  <%= link_helper 'welcome_logout', :action => 'logout' %>
+</div>

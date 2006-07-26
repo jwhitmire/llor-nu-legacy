@@ -1,0 +1,672 @@
+body {
+	margin:8px;
+	font-family:Arial, Helvetica, sans-serif;
+	font-size:12pt;
+}
+
+/* begin header */
+
+#header
+{
+margin:0px 0px 8px 0px;
+background:url(/images/header/background.png);
+background-position: top right;
+background-repeat: no-repeat;
+height:56px;
+left:0;
+top:0;
+}
+
+#logo {
+		  float:left;
+        padding: 0px;
+        margin-bottom: 0px;
+        }
+
+#logo ul {
+        margin-left: 0;
+        padding-left: 0;
+        display: inline;
+        border: none;
+        } 
+
+#logo ul li {
+        margin-left: 0;
+        padding-left: 0px;
+        border: none;
+        list-style: none;
+        display: inline;
+        }
+
+#title_nav {
+		  float:right;
+		  margin:12px 4px 0px 0px;
+        padding: 0px;
+        }
+
+#title_nav ul {
+        margin-left: 0;
+        padding-left: 0;
+        display: inline;
+        border: none;
+        } 
+
+#title_nav ul li {
+        margin-left: 0;
+        padding-left: 0px;
+        border: none;
+        list-style: none;
+        display: inline;
+        }
+
+/* end header */
+
+/* begin main content panes */
+#container {
+	width: 100%;
+	float: left;
+	margin-left:8px;
+	margin-right: -291px;
+}
+
+#action_pane {
+	margin-right: 291px;
+	height:340px;
+	z-index:0;
+}
+
+#nav_pane {
+	width: 267px;
+	float: right;
+	margin-right:8px;
+}
+/* end main content panes */
+
+/* needed by render_scene */
+
+img { border-width:0; }
+
+div.bubbles
+{
+background-color:white;
+}
+
+div.squares
+{
+position:absolute;
+width:65px;
+height:255px;
+}
+div.halo
+{
+position:absolute;
+width:65px;
+height:255px;
+}
+
+/* end render_scene stuff */
+
+table,p  { font-size:12pt; }
+
+.disabled { color:#999; }
+.green { color:green; font-weight:bold; }
+
+.expensive {color:brown; }
+p.visual { font-size: 0.9em }
+
+table.pricing
+{
+border-collapse:collapse;
+width:50%;
+float:right;
+margin-left:25px;
+}
+table.pricing td
+{
+border:1px solid #ccc;
+padding:3px 5px;
+}
+table.pricing th
+{
+background: #75789B;
+color:white;
+padding:2px 5px;
+font-size:0.7em;
+font-weight:normal;
+font-family:Verdana, Tahoma, Arial, Helvetica, sans-serif;
+}
+
+/*** GLOBAL WINDOW SETTINGS ***/
+#nohome
+{
+position:absolute;
+width:63%;
+top:72.3%;
+margin-top:143px;
+margin-bottom:20px;
+left:10px;
+}
+
+#nohome p, #nohome a, #nohome #content {
+	font-size:12pt;
+}
+
+#inventory {
+	position:absolute;
+	top:72.3%;
+	width:63%;
+	margin-top:60px;
+	left:10px;
+}
+
+#inventory_target {
+	float:left;
+	padding:0px;
+	margin-right:10px;
+	width:50px;
+}
+
+.inactive {
+	cursor:move;
+	float:left;
+}
+
+.active {
+	cursor:move;
+	float:left;
+}
+
+#inventory_wrapper {
+	padding:0px;
+	margin:0px;	
+	vertical-align:middle;
+}
+
+#nav_pane {
+	position:absolute;
+	z-index:5;
+	left:65%;
+	top:64px;
+}
+
+#buildings_pane {
+	position:absolute;
+	overflow:hidden;
+	z-index:0;
+	background: #111 url('/images/bg.png') no-repeat;
+
+	top:64px;
+	left:8px;
+	min-width:498px;
+	max-width:800px;
+	min-height:354px;
+	width:63%;
+	height:71.5%;
+}
+
+#action_pane {
+	position:absolute;
+	top:64px;
+	left:8px;
+	width:497px;
+	height:340px;
+	z-index:0;
+}
+
+#action_pane P {
+}
+
+#content P {
+}
+
+.form_titles {
+	font-weight:bold;
+}
+
+/*
+input {
+	margin-bottom:10px;
+	font-family: Helvetica;
+	background-color:#E8EEF2;
+	color:#74799B;
+}
+*/
+
+form {padding:0;margin:0}
+
+/*** NOTIFIER ***/
+#notifier {
+	position:absolute;
+	left:90px;
+	top:0px;
+	width:329px;
+	height:68px;
+}
+#notifier #content {
+	color:white;
+	font-weight:bold;
+	text-align:center;
+	vertical-align:middle;
+	background-color:#F23B97;
+}
+
+#notifier #content td {
+	color:white;
+	font-weight:bold;
+}
+
+#notifier a {
+	display:block;
+	background:url("/images/notifier_left.png")	no-repeat left top;
+	padding:5px 15px 4px 6px;
+}
+
+/*** SECONDARY NAV ***/
+#secondary_nav {
+	position:absolute;
+	left:0px;
+	top:0px;
+	width:267px;
+	height:28px;
+}
+
+#left-end_ {
+	position:absolute;
+	left:0px;
+	top:0px;
+	width:17px;
+	height:28px;
+}
+
+#logout_ {
+	position:absolute;
+	left:17px;
+	top:0px;
+	width:51px;
+	height:28px;
+}
+
+#settings_ {
+	position:absolute;
+	left:68px;
+	top:0px;
+	width:68px;
+	height:28px;
+}
+
+#help_ {
+	position:absolute;
+	left:136px;
+	top:0px;
+	width:53px;
+	height:28px;
+}
+
+#forums_ {
+	position:absolute;
+	left:189px;
+	top:0px;
+	width:57px;
+	height:28px;
+}
+
+#right-end_ {
+	position:absolute;
+	left:246px;
+	top:0px;
+	width:21px;
+	height:28px;
+}
+
+/*** MAIN NAV ***/
+#main_nav {
+	position:absolute;
+	left:0px;
+	top:32px;
+	width:266px;
+	height:59px;
+}
+
+#end-cap_ {
+	position:absolute;
+	left:0px;
+	top:0px;
+	width:14px;
+	height:59px;
+}
+
+#buildings_ {
+	position:absolute;
+	left:14px;
+	top:0px;
+	width:56px;
+	height:59px;
+}
+
+#scores_ {
+	position:absolute;
+	left:70px;
+	top:0px;
+	width:63px;
+	height:59px;
+}
+
+#payments_ {
+	position:absolute;
+	left:133px;
+	top:0px;
+	width:67px;
+	height:59px;
+}
+
+#bank_ {
+	position:absolute;
+	left:200px;
+	top:0px;
+	width:66px;
+	height:59px;
+}
+
+/*** ROLL NAV ***/
+#roll_nav {
+	position:absolute;
+	left:0px;
+	top:95px;
+	width:266px;
+	height:78px;
+}
+
+#fund_text {
+	position:absolute;
+	left:47px;
+	top:5px;
+	width:210px;
+	height:44px;
+	text-align:right;	
+	font-size: 14pt;
+	font-weight:bold;
+	color:white;
+}
+
+#roll {
+	position:absolute;
+	left:49px;
+	top:145px;
+	width:214px;
+	text-align:center;	
+	font-size: 14pt;
+	font-weight:bold;
+	color:white;
+}
+
+#die_ {
+	position:absolute;
+	left:0px;
+	top:0px;
+	width:49px;
+	height:44px;
+}
+
+#funds_ {
+	position:absolute;
+	left:49px;
+	top:0px;
+	width:217px;
+	height:44px;
+}
+
+#space_ {
+	position:absolute;
+	left:0px;
+	top:44px;
+	width:49px;
+	height:34px;
+}
+
+#roll-status_ {
+	position:absolute;
+	left:49px;
+	top:44px;
+	width:217px;
+	height:34px;
+}
+
+
+#roll_dice {
+}
+
+#rolling_dice {
+	position:absolute;
+	left:0px;
+	top:0px;
+	width:49px;
+	height:44px;
+}
+
+
+#account_balance {
+	background-color:#66B241;
+	color:white;
+	margin:4px;
+	padding:10px;
+}
+
+#secondary_nav {
+}
+
+#roll {
+	position:absolute;
+	left:49px;
+	top:50px;
+	width:214px;
+	text-align:center;	
+	font-size: 14pt;
+	font-weight:bold;
+	color:white;
+}
+
+#rolling {
+	position:absolute;
+	left:49px;
+	top:50px;
+	width:214px;
+	text-align:center;	
+	font-size: 14pt;
+	font-weight:bold;
+	color:white;
+}
+
+/*** MESSAGES ***/
+#messages {
+	position:absolute;
+	left:0px;
+	top:177px;
+	width: 266px;
+}
+
+#messages a {
+	color:#AE0D57;
+}
+
+#info {
+	position:absolute;
+	left:0px;
+	top:0px;
+	width: 266px;
+}
+
+#info a {
+	color:#AE0D57;
+}
+
+.roundedDiv {
+	background: #e8eef2;
+	color: #63678a;
+}
+
+.header ul {
+	background: url(/images/airtight.gif) -8px -8px no-repeat;
+	height: 8px;
+	list-style: none;
+	margin: 0px;
+}
+.header ul li {
+	float: right;
+	background: url(/images/airtight.gif) 0px -8px no-repeat;
+	width: 8px;
+	line-height: 8px;
+}
+.footer ul {
+	background: url(/images/airtight.gif) -8px 0px no-repeat;
+	height: 8px;
+	list-style: none;
+	margin: 0px;
+}
+.footer ul li {
+	float: right;
+	background: url(/images/airtight.gif) 0px 0px no-repeat;
+	width: 8px;
+	line-height: 7px;
+}
+#content {	
+	padding: 0 20px;
+	display: block;	
+	font-size: 16pt;
+}
+
+#content #flash {	 
+	padding: 0 20px;
+	display: block;	
+	font-family: Helvetica;
+	font-size: 16pt;
+}
+
+#content TD {
+	/* display: block; */
+}
+
+ol li {
+	margin-bottom: 10px;
+}
+
+
+#title {
+	padding:8px;
+	border-bottom:1px solid #dcdcdc;
+}
+
+
+/* SPRITES */
+
+#vehicle {
+	position: absolute;
+	top: 307px;
+	left: 52px;
+}
+
+#place_marker {
+	position: absolute;
+	top: 187px;
+	left: 45px;
+}
+
+#all_squares {
+	z-index:100;	
+}
+
+.bubbles {
+	position:absolute;
+	left:90px;
+	top:0px;
+	width:329px;
+	height:68px;
+}
+.bubbles #content {
+	color:white;
+	font-weight:normal;
+	text-align:center;
+	vertical-align:middle;
+	background-color:#F23B97;
+}
+
+.bubbles #content td {
+	color:white;
+	font-weight:normal;
+}
+
+.bubbles a {
+	display:block;
+	background:url("/images/notifier_left.png")	no-repeat left top;
+	padding:5px 15px 4px 6px;
+}
+
+.otherplayers {
+	position:absolute;
+	left:90px;
+	top:0px;
+	width:329px;
+	height:68px;
+}
+.otherplayers #content {
+	color:white;
+	font-weight:normal;
+	text-align:center;
+	vertical-align:middle;
+	background-color:#F23B97;
+}
+
+.otherplayers #content td {
+	color:white;
+	font-weight:normal;
+}
+
+.otherplayers a {
+	display:block;
+	background:url("/images/notifier_left.png")	no-repeat left top;
+	padding:5px 15px 4px 6px;
+}
+
+.Help {
+	position: absolute; posTop: 0; posLeft: 0;
+	border-width:1; border-style: solid;
+	background-color: yellow; color: #000000;
+	width:240; font-size:9pt
+}
+
+
+/* FORMS */
+.fieldWithErrors {
+	color:#BD2D69;
+}
+
+/* BUILDING EDIT */
+#building_list {
+	position:absolute;
+	z-index:5;
+	left:514px;
+	top:350px;
+}
+
+
+/* Fading Tooltips By Dustin Diaz*/
+body div#toolTip { position:absolute;background:#F23B97;text-align:left;padding:10px;-moz-border-radius:8px; }
+body div#toolTip p { margin:0;padding:0;color:#fff;font:11pt/12pt helvetica,verdana,arial,serif; }
+body div#toolTip p em { display:block;margin-top:3px;color:#f60;font-style:normal;font-weight:bold; }
+
+.passive_item {
+	cursor:move;
+}
+
+.immediate_item {
+	cursor:move;
+}
+
+#active_item {
+	position:absolute;
+	z-index:200;
+}
+#active_item_ex {
+	position:absolute;
+	top:30px;
+	left:30px;
+}

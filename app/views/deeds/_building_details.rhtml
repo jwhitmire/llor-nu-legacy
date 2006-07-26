@@ -1,0 +1,141 @@
+<% type = deed.property_type %>
+  <div><img style="position: absolute;top:125px;left:325px;z-index:3" src="/images/building_bg.png" width="164" height="161" /></div>
+  <% top = -42 %>
+  <% left = -45 %>
+  <% adjust = 38 %>
+  <% offset = ((20 * 6)+adjust) - (deed.levels * 6)+top %>
+					
+		<div id="sq" style="position: absolute;top:<%= offset + 90 %>px;left:380px;z-index:4">
+			<%= draw_building(deed.levels,deed.property_type.id) %>
+		</div>
+		
+		<div>
+			
+			<% if @user.user_instance.instance.deeds.size > 1 %>
+				<div class="pinkOnBlueRoundedDiv" style="width:280px;">
+					<div class="pinkOnBlueHeader"><ul><li><img src="/images/dot.gif" height="8" width="1"></li></ul></div>
+					<div id="content">						
+						<strong>
+						<% if deed.lower_item %>
+						<%= link_to "Next", building_show_url(:id => deed.lower_item), :style => "float:right;" %>
+						<% end %>
+						<% if deed.higher_item %>
+						<%= link_to "Previous", building_show_url( :id => deed.higher_item ) %>
+						<% end %>
+						</strong>
+						<br style="clear:right" />
+					</div>
+					<div class="pinkOnBlueFooter"><ul><li><img src="/images/dot.gif" height="8" width="1"></li></ul></div>
+				</div>
+			<% end %>
+			
+			
+			<div class="whiteRoundedDiv" style="width:280px;">
+				<div class="whiteHeader"><ul><li><img src="/images/dot.gif" height="8" width="1"></li></ul></div>
+				<div id="content">
+					<div id="building_title"><%= render :partial=> 'building_title' %></div>
+				</div>
+				<div class="whiteFooter"><ul><li><img src="/images/dot.gif" height="8" width="1"></li></ul></div>
+			</div>
+			
+			<p style="width:280px; margin-bottom:2em;" class="visual">This building has seen <%= deed.total_revenue %> in profits since it was built <%= time_ago_in_words(deed.created_on) %> ago.</p>
+			
+			<% counter = 1 %>
+			<% rent = type.base_rent %>
+			<% cost = type.base_price %>
+			<% table_head = capture do %>
+			<table class="pricing" cellspacing="0">
+				<tr>
+					<th width="1%">Stories</th>
+					<th width="1%">Rent</th>
+					<th>Build / Sell</th>
+					<th>&nbsp;</th>
+				</tr>
+			<% end %>
+			<%= table_head %>
+			<%  max_affordable_levels=1000
+				  type.max_levels.times do 
+			 %>
+				<% if @user.user_instance.account.balance < deed.cost_to_upgrade(counter) %>
+					<tr class="disabled">
+				<% elsif deed.levels > counter %>
+					<tr class="owned">
+				<% else %>
+				<tr>
+				<% end %>
+				<% if deed.cost_to_upgrade(counter) > @user.user_instance.account.balance and max_affordable_levels==1000
+				max_affordable_levels=counter-1
+				end %>
+				<% if counter == type.max_levels or counter < (max_affordable_levels+2) %>
+					<td><%= counter %></td>
+					<td><%= number_with_delimiter(deed.property_type.rent(counter)) %></td>
+					<td>
+						<% if deed.levels < counter %>
+							-<%=  number_with_delimiter(deed.cost_to_upgrade(counter)) %>
+							
+						<% elsif deed.levels >= counter %>
+							<span class="green">
+							+<%= number_with_delimiter(deed.cost_to_sell(counter-1)) %>
+							</span>
+						<% else %>
+							&nbsp;
+						<% end %>
+					</td>
+					<td>
+						<% if deed.levels < counter and @user.user_instance.account.balance >= deed.cost_to_upgrade(counter-1) %>						
+							<%= link_to_remote "Buy",  :update => "action_pane", :url => {:action=> 'upgrade', :id => deed.id, :levels => counter-deed.levels}, :oncomplete => "$('actual_message').innerHTML = '#{session[:messages]}'" %>
+						<% elsif counter==1 %>
+							<%= link_to "Sell", {:action=> 'sell', :id => deed.id, :levels => deed.levels-counter+1 } %>
+						
+						<% elsif deed.levels >= counter and deed.levels > 1 %>
+							<%= link_to_remote "Sell", :update => "action_pane", :url => {:action=> 'sell', :id => deed.id, :levels => deed.levels-counter+1 } %>
+						<% end %>
+					</td>
+				<% elsif counter == max_affordable_levels+2 %>
+				<tr class="expensive">
+					<td colspan="4" style="text-align:center;">
+					Cannot afford past <%= max_affordable_levels %> stories.
+					</td>
+				</tr>	
+				<% end %>
+				<% counter += 1 %>
+				</tr>
+			<% end %>
+			</table>
+	
+<br />			
+<p><b>Upgrades</b></p>
+			<p>Build higher at any time by simply purchasing another story.</p>
+
+			<p style="width:280px;">
+				<b>Maintenance</b></p>
+				<p>
+				<% if deed.health == 14 %>
+					Your building is in perfect shape and charging full rent.
+				<% elsif deed.health < 14 and deed.health > 10 %>
+					It's not looking too shabby yet, but the lack of maintenance is lowering your rates.
+				<% elsif deed.health <= 10 and deed.health > 5 %>
+					It's starting to get nasty. People are finding things under the beds, and it's not good. Your rates are hurting because of it.
+				<% else %>
+					If you don't do something about this wreck of a building it'll be condemned and you'll lose it. If that weren't bad enough, your rates are severely reduced because of all the puke.
+				<% end %>				
+			</p>
+			<% if deed.health < 14 %>
+			<p>
+				Perform <%= link_to "minimal maintenance", :action => "minimal", :id => deed.id %> (50)<br />
+				Perform <%= link_to "maximum maintenance", :action => "maximum", :id => deed.id %> (<%= (14 - deed.health) * 50 %>)<br />
+			</p>
+			<% end %>
+			
+				
+<p><b>Selling</b></p>
+<p>Sell back levels to make some quick cash.  Selling stories comes with a 10% penalty.</p>
+
+
+		<br style="clear:right" />
+		</div>
+<script type="text/javascript" language="javascript" charset="utf-8">
+// <![CDATA[	
+	new Ajax.Updater('fund_text', '/js/render_balance');
+// ]]>
+</script>

@@ -1,0 +1,15 @@
+	<div class="whiteRoundedDiv">
+		<div class="whiteHeader"><ul><li><img src="/images/dot.gif" height="8" width="1"></li></ul></div>
+		<div id="content">
+			<table style="padding:2px;">
+				<tr>
+					<td colspan="2"><b>Active Item</b></td>
+				</tr>
+				<tr>
+					<td style="width:48px;" align="left"><img src="/images/item_<%= @active_item.item_id %>.png" width="48" height="48" alt="<%= @active_item.item.description %>" /></td>
+					<td style="width:368px;"><%= @active_item.item.description %></td>
+				</tr>
+			</table>
+		</div>
+		<div class="whiteFooter"><ul><li><img src="/images/dot.gif" height="8" width="1"></li></ul></div>
+	</div>

@@ -1,0 +1,50 @@
+<% if flash['surprise'] or flash['safe'] or flash['rent'] or flash['build'] or flash['locked'] or flash['lotto'] or flash['item'] or flash[:notice] %>
+<div class="roundedDiv">
+	<div class="header"><ul><li><img src="/images/dot.gif" height="8" width="1"></li></ul></div>
+	<div id="content">		
+			<% if flash['safe'] %>				
+				<div style="margin-bottom:10px;"><%= flash['safe'] %></div>
+			<% end %>
+			<% if flash['build'] %>				
+				<div style="margin-bottom:10px;">You can buy and <%= link_to_remote "build", :update => "action_window", :url => {:action=> 'build'} %> on this property.</div>
+			<% end %>
+			<% if flash['locked'] %>				
+				<div style="margin-bottom:10px;"><%= flash['locked'] %></div>
+			<% end %>
+			<% if flash['rent'] %>
+				<div style="margin-bottom:10px;"><%= flash['rent'] %></div>
+			<% end %>
+			<% if flash['lotto'] %>
+				<div style="margin-bottom:10px;"><%= flash['lotto'] %></div>
+			<% end %>
+			<% if flash['surprise'] %>
+				<div style="margin-bottom:10px;"><%= flash['surprise'] %></div>
+			<% end %>
+			<% if flash['item'] %>
+				<div style="margin-bottom:10px;"><%= flash['item'] %></div>
+			<% end %>
+			<% if flash[:notice] %>
+				<div style="margin-bottom:10px;"><%= flash[:notice] %></div>
+			<% end %>
+	</div>
+	<div class="footer"><ul><li><img src="/images/dot.gif" height="8" width="1"></li></ul></div>
+</div>
+<% elsif @user.square.deed == nil and @user.square.square_type.id == 3 %>
+	<div class="roundedDiv">
+	<div class="header"><ul><li><img src="/images/dot.gif" height="8" width="1"></li></ul></div>
+	<div id="content">You can buy and <%= link_to_remote "build", :update => "action_window", :url => {:controller=> 'play',:action=> 'build'} %> on this property.</div>
+	<div class="footer"><ul><li><img src="/images/dot.gif" height="8" width="1"></li></ul></div>
+</div>
+<% else %>
+<div class="roundedDiv">
+	<div class="header"><ul><li><img src="/images/dot.gif" height="8" width="1"></li></ul></div>
+	<div id="content">Waiting for you to roll the dice.</div>
+	<div class="footer"><ul><li><img src="/images/dot.gif" height="8" width="1"></li></ul></div>
+</div>
+<% end %>
+<div class="roundedDiv">
+	<div class="header"><ul><li><img src="/images/dot.gif" height="8" width="1"></li></ul></div>
+	<div id="content">Leave a message on this square.</div>
+	<div class="footer"><ul><li><img src="/images/dot.gif" height="8" width="1"></li></ul></div>
+</div>
+

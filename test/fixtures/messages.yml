@@ -1,0 +1,14 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+first_message:
+  id: 1
+  user_id: 1
+  square_id: 1
+  message: This is my message
+  created_on: 2005-10-06 22:34:23
+  
+another_message:
+  id: 2
+  user_id: 1000001
+  square_id: 2
+  message: gfys!
+  created_on: 2005-10-05 12:23:43

@@ -1,0 +1,14 @@
+<% if @active_item != nil %>
+    <div id="item_wrapper">
+    <a href="#"><img src="/images/item_<%= @active_item.item.id %>.png" width="48" height="48" border="0" /></a>
+    <div id="active_item_ex" style="position:absolute;"><%= link_to_remote "<img src=\"/images/x.png\" width=\"17\" height=\"18\" border=\"0\" />", :loading => "new Effect.Fade('item_wrapper');", :update => "active_item", :url => {:action => "item_deactivate"} %></div>
+    </div>
+<% end %>
+
+<% if session[:messages] %>
+<script type="text/javascript" language="javascript" charset="utf-8">
+// <![CDATA[
+	new Ajax.Updater('messages', '/js/update_messages');	
+// ]]>
+</script>
+<% end %>

@@ -1,0 +1,139 @@
+.blue_on_black_wrapper {
+	background: #747A9B;
+	color: #fff;
+	margin-bottom:4px;
+}
+
+.blue_on_black_header ul {
+	background: url(/images/bubble_wrap/blue_on_black.gif) -8px -8px no-repeat;
+	height: 8px;
+	list-style: none;
+	margin: 0;
+}
+.blue_on_black_header ul li {
+	float: right;
+	background: url(/images/bubble_wrap/blue_on_black.gif) 0px -8px no-repeat;
+	width: 8px;
+	line-height: 8px;
+}
+.blue_on_black_footer ul {
+	background: url(/images/bubble_wrap/blue_on_black.gif) -8px 0px no-repeat;
+	height: 8px;
+	list-style: none;
+	margin: 0;
+}
+.blue_on_black_footer ul li {
+	float: right;
+	background: url(/images/bubble_wrap/blue_on_black.gif) 0px 0px no-repeat;
+	width: 8px;
+	line-height: 5px;
+}
+
+.light_blue_on_black_wrapper {
+	background: #e8eef2;
+	color: #63678a;
+	margin-bottom:4px;
+}
+
+.light_blue_on_black_header ul {
+	background: url(/images/bubble_wrap/light_blue_on_black.gif) -8px -8px no-repeat;
+	height: 8px;
+	list-style: none;
+	margin: 0;
+}
+.light_blue_on_black_header ul li {
+	float: right;
+	background: url(/images/bubble_wrap/light_blue_on_black.gif) 0px -8px no-repeat;
+	width: 8px;
+	line-height: 8px;
+}
+.light_blue_on_black_footer ul {
+	background: url(/images/bubble_wrap/light_blue_on_black.gif) -8px 0px no-repeat;
+	height: 8px;
+	list-style: none;
+	margin: 0;
+}
+.light_blue_on_black_footer ul li {
+	float: right;
+	background: url(/images/bubble_wrap/light_blue_on_black.gif) 0px 0px no-repeat;
+	width: 8px;
+	line-height: 5px;
+}
+
+#content {	
+	padding: 0 20px;
+	display: block;	
+	font-size: 16pt;
+}
+
+.pink_on_light_blue_wrapper {
+	background: #FFADC7;
+	color: #bd2d69;
+	margin-bottom:4px;
+}
+
+.pink_on_light_blue_wrapper TD {
+	background: #FFADC7;
+	color: #bd2d69;
+	margin-bottom:4px;
+}
+
+.pink_on_light_blue_header ul {
+	background: url(/images/bubble_wrap/pink_on_light_blue.gif) -8px -8px no-repeat;
+	height: 8px;
+	list-style: none;
+	margin: 0;
+}
+.pink_on_light_blue_header ul li {
+	float: right;
+	background: url(/images/bubble_wrap/pink_on_light_blue.gif) 0px -8px no-repeat;
+	width: 8px;
+	line-height: 5px;
+}
+.pink_on_light_blue_footer ul {
+	background: url(/images/bubble_wrap/pink_on_light_blue.gif) -8px 0px no-repeat;
+	height: 8px;
+	list-style: none;
+	margin: 0;
+}
+.pink_on_light_blue_footer ul li {
+	float: right;
+	background: url(/images/bubble_wrap/pink_on_light_blue.gif) 0px 0px no-repeat;
+	width: 8px;
+	line-height: 1px;
+}
+
+.scarlet_on_light_blue_wrapper {
+	background: #EA1486;
+	color: #fff;
+	margin-bottom:4px;
+}
+
+.scarlet_on_light_blue_header ul {
+	background: url(/images/at_pink2_on_blue.png) -8px -8px no-repeat;
+	height: 8px;
+	list-style: none;
+	margin: 0;
+}
+.scarlet_on_light_blue_header ul li {
+	float: right;
+	background: url(/images/at_pink2_on_blue.png) 0px -8px no-repeat;
+	width: 8px;
+	line-height: 5px;
+}
+.scarlet_on_light_blue_footer ul {
+	background: url(/images/at_pink2_on_blue.png) -8px 0px no-repeat;
+	height: 8px;
+	list-style: none;
+	margin: 0;
+}
+.scarlet_on_light_blue_footer ul li {
+	float: right;
+	background: url(/images/at_pink2_on_blue.png) 0px 0px no-repeat;
+	width: 8px;
+	line-height: 1px;
+}
+
+.scarlet_on_light_blue_wrapper A {
+	color:#fff;
+}

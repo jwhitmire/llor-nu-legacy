@@ -1,0 +1,49 @@
+<% if @user.user_items.size == 0 %>
+	<p>You haven't found any special items. Keep looking!</p>
+	<p>&nbsp;</p>
+<% else %>
+	<div id="item_activate">
+		<div class="pinkOnBlueRoundedDiv">
+			<div class="pinkOnBlueHeader"><ul><li><img src="/images/dot.gif" height="8" width="1"></li></ul></div>
+			<div id="content">Drag an item here to make it Active</div>	
+			<div class="pinkOnBlueFooter"><ul><li><img src="/images/dot.gif" height="8" width="1"></li></ul></div>
+		</div>
+	</div>
+	
+	<div id="item_deactivate">
+		<div class="whiteRoundedDiv">
+			<div class="whiteHeader"><ul><li><img src="/images/dot.gif" height="8" width="1"></li></ul></div>
+			<div id="content">Drag an item here to make it Inactive</div>	
+			<div class="whiteFooter"><ul><li><img src="/images/dot.gif" height="8" width="1"></li></ul></div>
+		</div>
+	</div>
+	
+	<div style="margin-top:30px;margin-bottom:30px;">You have <%= @user.user_items.size %> item(s). Only one can be active.</div>
+	
+	<div id="indicator" style="display:none;">Making active...</div>
+	<div style="clear:both"></div>
+	
+	<div id="items">		
+		<%= render :partial => 'items' %>
+	</div>
+	
+	<script type="text/javascript">Droppables.add('item_activate', {accept:'inactive',onDrop:function(element){new Ajax.Updater('items', '/inventory/item_activate', {onLoading:function(request){Element.show('indicator')}, onComplete:function(request){Element.hide('indicator')}, parameters:'id=' + encodeURIComponent(element.id), evalScripts:true, asynchronous:true})}})</script>
+	<script type="text/javascript">Droppables.add('item_deactivate', {accept:'active',onDrop:function(element){Element.hide(element); new Ajax.Updater('items', '/inventory/item_deactivate', {onLoading:function(request){Element.show('indicator')}, onComplete:function(request){Element.hide('indicator')}, parameters:'id=' + encodeURIComponent(element.id), evalScripts:true, asynchronous:true})}})</script>
+	
+	<div style="margin-top:30px;">
+	<b>Key:</b>
+	<div class="item">
+		<table style="width:416px;">
+			<tr>
+				<td style="width:48px;" align="left" valign="top"><img src="/images/item_1.png" width="48" height="48" alt="Persuasive Duck" /></td>
+				<td style="width:368px;">
+					<b>Persuasive Duck</b><br />
+						The Persuasive Duck is an important ally in your adventures. Whenever you land on a hotel, the duck helps you charm the hotel clerks into giving you a discount. But use it wisely, Persuasive Ducks run out of uses.<br />								
+				</td>
+			</tr>
+		</table>
+	</div>
+	<p>More special items coming soon.</p>
+	</div>	
+
+<% end -%>

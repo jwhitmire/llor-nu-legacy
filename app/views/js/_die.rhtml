@@ -1,0 +1,4 @@
+<% number = @session[:roll] || 5 %>
+<% if @user.account.balance > 0 %>
+<a href="#" onclick="roll();"><img src="/images/<%= number %>.gif" width="49" height="44" border="0" alt="Roll" /></a>
+<% end %>

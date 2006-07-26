@@ -1,0 +1,21 @@
+<%= start_bubble_wrap("light_blue","black","inventory_wrapper") %>
+    <img src="/images/dot.gif" width="1" height="45" />
+    <%= start_bubble_wrap("pink","light_blue","inventory_target") %>
+        <img src="/images/dot.gif" width="50" height="35" />
+    <%= end_bubble_wrap("pink","light_blue") %>
+    <% if @user.user_items %>
+        <% # if active item isn't in the first 10, add it to the array of items
+          items = @user.user_items.reload.first(10) 
+        %>
+        <% items.each do |item| -%>		
+        		<img class="<%= "in" if @active_item != item %>active" style="cursor:move;float:left;margin-right:5px;margin-top:5px;" 
+        			  id="<%= item.id %>" 
+        			  src="/images/item_<%= item.item.id %>.png" width="48" height="48" 
+        			  alt="<%= item.item.description %>" />
+        			<script type="text/javascript">new Draggable('<%= item.id %>', {revert:true})</script>        			
+        <% end -%>    
+    <% end %>
+    <div id="indicator" style="display:none;">Making active...</div>
+<%= end_bubble_wrap("light_blue","black") %>
+
+<script type="text/javascript">Droppables.add('inventory_target', {accept:'inactive',onDrop:function(element){new Ajax.Updater('items', '/inventory/item_activate', {onLoading:function(request){Element.show('indicator')}, onComplete:function(request){Element.hide('indicator')}, parameters:'id=' + encodeURIComponent(element.id), evalScripts:true, asynchronous:true})}})</script>

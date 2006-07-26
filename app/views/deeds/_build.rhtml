@@ -1,0 +1,61 @@
+<div id="container">
+<div id="action_pane">
+	<%= start_bubble_wrap("blue","black") %>Buy a Building<%= end_bubble_wrap("blue","black") %>
+	
+	<%= start_bubble_wrap("light_blue","black") %>			
+		<%= start_bubble_wrap("scarlet","light_blue") %>
+		    <b>Hotel Types: <% 1..4.times do |i| %><% i += 1 %><%= link_to_remote i, :update=> "x",:loading=>'action_window_up()', :complete => 'action_window_down()', :url => {:action => "build", :page=>i} %> <% end %></b>
+		<%= end_bubble_wrap("scarlet","light_blue") %>				
+		<div id="building_details">
+		    <% property = @properties[0] %>
+			<% top = -42 %>
+			<% left = -45 %>
+			<% adjust = 38 %>
+			<% offset = ((20 * 6)+adjust) - (property.max_levels * 6)+top %>
+				
+			<div><img style="position: absolute;top:100px;left:312px;z-index:3" src="/images/building_bg.png" width="164" height="161"  /></div>
+			<div id="sq" style="position: absolute;top:<%= offset + 60 %>px;left:360px;z-index:4">		
+				<%= draw_building(property.max_levels,property.id) %>
+			</div>
+
+			<div style="width:280px;">
+				<%= start_bubble_wrap("pink","light_blue") %>
+						<b><%= property.title %></b>
+				<%= end_bubble_wrap("pink","light_blue") %>
+				
+				<p><%= property.description %></p>
+				<p>
+				Maximum Stories: <%= property.max_levels %><br />
+				</p>
+				<p>Buildings can be upgraded anytime after purchase without losing a turn.</p>
+			</div>
+			
+			<div>
+				<% level_counter = 1 %>
+				<table style="width:100%;" padding="2">
+					<tr>
+						<td width="25%"><b>Stories</b></td>
+						<td width="25%" align="right"><b>Rent</b></td>								
+						<td width="25%" align="right"><b>Cost</b></td>
+						<td width="25%">&nbsp;</td>
+					</tr>
+				<% PropertyType.get_max_levels(property.id,@user).to_i.times do %>
+					<tr>
+						<td><%= level_counter %></td>								
+						<td align="right"><%= property.rent(level_counter) %></td>
+						<td align="right">
+						<%= number_with_delimiter(this_cost = property.cost(level_counter)) %>								
+						</td>
+						<td><% if this_cost <= @user.user_instance.account.balance %><%= link_to "Buy", :action=> 'buy', :id => property.id, :levels => level_counter %> <img id="spinner_<%= level_counter %>" style="display:none;" src="/images/spinner.gif" width="18" height="18" border="0"><% else %>&nbsp;<% end %></td>
+					<% level_counter += 1 %>
+					</tr>
+				<% end %>
+				</table>	
+		    </div>
+		</div>
+	<%= end_bubble_wrap("light_blue","black") %>	
+</div>
+</div>
+<div id="nav_pane">
+	<%= render :partial => '/play/non_scroll_nav' %>
+</div>

@@ -1,0 +1,4 @@
+<% @squares.each do |square| %>
+	<% users = User.find(:all, :conditions => ['square_id = ?', square.id]) %>
+	<div><%= square.id %> <% users.each do |user| %>* <% end %></div>
+<% end %>

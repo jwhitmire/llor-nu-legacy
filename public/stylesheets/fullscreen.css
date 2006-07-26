@@ -1,0 +1,54 @@
+#buildings_pane
+{
+top:0px;
+max-width:1280px;
+max-height:910px;
+height:100%;
+width:100%;
+background: #000 url('/images/bg_1280.png') no-repeat;
+}
+
+#nav_pane {
+	position:relative;
+	z-index:5;
+	top:10px;
+	left:990px;
+	right:10px;
+}
+
+#active_item
+{
+position:absolute;
+top:350px;
+left:10px;
+}
+
+#nav_pane .header { display:none; }
+#nav_pane .footer { display:none; }
+#nav_pane #content { 
+background: black; 
+color:white;
+padding:10px;
+padding-left:50px;
+padding-right:5px;
+}
+
+#llor_nu
+{
+position:absolute;
+left:5px;
+top:5px;
+width:140px;
+height:50px;
+}
+
+#tag_line
+{
+display:none;
+}
+
+#nohome
+{
+position:absolute;
+display:none;
+}

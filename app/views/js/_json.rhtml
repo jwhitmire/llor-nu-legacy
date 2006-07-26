@@ -1,0 +1,19 @@
+<script>
+new_squares= { "squares" : [
+<% @squares.compact.each_with_index do |square,i| -%>
+    { position: "<%= square.position %>", 
+      square_type_id: <%= square.square_type_id  %>, 
+      deeded: <% if square.deed %>true<% else %>false<% end %>, 
+      other_players: <%= square.locked?(@user) %><% if square.deed %>,
+	deed: { 
+        name: "<% if square.deed.name %><%= sanitize(square.deed.name) %><% else %><%= square.deed.property_type.title %><% end %>",
+	property_type_id: <%= square.deed.property_type_id %>, 
+        owner: "<%= sanitize square.deed.user.name %>", 
+        levels: "<%= square.deed.levels %>", 
+        rent: "<%= rent_calc(square.deed.property_type, square.deed.levels) %>"}
+      <% end %> 
+    }<%= "," if i < squares.length-1 %>
+<% end -%>
+  ]
+};
+</script>

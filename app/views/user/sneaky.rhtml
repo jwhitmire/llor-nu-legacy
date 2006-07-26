@@ -1,0 +1,39 @@
+<div id="action_pane">	
+	<div class="blueRoundedDiv">
+		<div class="blueHeader"><ul><li><img src="/images/dot.gif" height="8" width="1"></li></ul></div>
+			<div id="content">Sneaky New Player Signup</div>
+		<div class="blueFooter"><ul><li><img src="/images/dot.gif" height="8" width="1"></li></ul></div>
+	</div>
+	
+	<div class="roundedDiv">
+		<div class="header"><ul><li><img src="/images/dot.gif" height="8" width="1"></li></ul></div>
+			<div id="content">
+				<form action="/join" method="post">
+				<% if flash['message'] %>
+					<div class="whiteRoundedDiv">
+						<div class="whiteHeader"><ul><li><img src="/images/dot.gif" height="8" width="1"></li></ul></div>
+						<div id="content">
+							<b><%= error_messages_for 'user', :header_tag => "div" %></b>
+						</div>
+						<div class="whiteFooter"><ul><li><img src="/images/dot.gif" height="8" width="1"></li></ul></div>
+					</div>
+				<% end %>
+		      <%= render_partial 'edit', :user => @user, :submit => false %></br>
+				</form>
+			</div>
+		<div class="footer"><ul><li><img src="/images/dot.gif" height="8" width="1"></li></ul></div>
+	</div>
+</div>
+<div id="nav_pane">
+	<div id="info">
+	<div class="blueRoundedDiv">
+		<div class="blueHeader"><ul><li><img src="/images/dot.gif" height="8" width="1"></li></ul></div>
+			<div id="content">Signups are closed for a little while. Sit tight!</div>
+		<div class="blueFooter"><ul><li><img src="/images/dot.gif" height="8" width="1"></li></ul></div>
+	</div>
+	</div>
+</div>
+
+
+                                                                                
+

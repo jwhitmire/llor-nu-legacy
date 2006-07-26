@@ -1,0 +1,29 @@
+<html>
+    <head>
+        <title>llor.nu</title>
+        <%= stylesheet_link_tag 'fixed' %>
+        <%= stylesheet_link_tag 'bubble_wrap' %>
+    </head>
+    <body onload="preloadImages();" bgcolor="black">	
+    	<%= render :partial => 'play/title_bar' %>
+
+	
+	<div id="action_pane">
+	<div class="blueRoundedDiv">
+		<%= start_bubble_wrap("blue","black") %>Yoink!<%= end_bubble_wrap("blue","black") %>
+	</div>
+	
+	<div class="roundedDiv">
+		<div class="header"><ul><li><img src="/images/dot.gif" height="8" width="1"></li></ul></div>
+			<div id="content">
+				<p>The game is down for a bit while a big update is being deployed. I'll post to the <a href="http://forums.llor.nu/">forums</a> when it's back up.</p>
+				<p>Maybe you can learn about <a href="http://www.google.com/search?hl=en&q=dolphins&btnG=Google+Search">dolphins</a> or look at <a href="http://images.google.com/images?svnum=10&hl=en&lr=&c2coff=1&q=kittens&btnG=Search">kittens</a> while you wait.</p>
+			</div>
+			<div class="footer"><ul><li><img src="/images/dot.gif" height="8" width="1"></li></ul></div>
+		</div>
+	</div>
+
+ </body>
+</html>
+
+

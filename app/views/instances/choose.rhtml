@@ -1,0 +1,36 @@
+<div id="container">
+<div id="action_pane">	
+	<%= start_bubble_wrap("blue","black") %>Select a Game<%= end_bubble_wrap("blue","black") %>
+	
+	<%= start_bubble_wrap("light_blue","black") %>
+		<%= start_bubble_wrap("scarlet","light_blue") %>
+			Games
+		<%= end_bubble_wrap("scarlet","light_blue") %>
+		<p>You may join any one of the games in progress below and freely change games at any time. Only one game can be played at a time.</p>
+			
+		<% @instances.each do |instance| %>
+			<%= start_bubble_wrap("scarlet","light_blue") %>
+			<%= instance.name %>
+			<%= end_bubble_wrap("scarlet","light_blue") %>
+			<%= start_bubble_wrap("pink","light_blue") %>
+			<%= instance.description %>			
+			<p>
+			<a href="#" onclick="new Effect.BlindDown('settings_<%= instance.id %>');">View Settings</a> <% if UserInstance.check(@user.id,instance.id) %><%= link_to "Continue Playing...", :action => 'join', :id => instance.id %><% else %><%= link_to "Join", :action => 'join', :id => instance.id %><% end %>
+			</p>
+			<div id="settings_<%= instance.id %>" style="display:none;">
+				<%= debug instance.setting.value %>
+				<a href="#" onclick="new Effect.BlindUp('settings_<%= instance.id %>');">Hide Settings</a>
+			</div>
+			<%= end_bubble_wrap("pink","light_blue") %>
+		<% end %>
+		
+		<% if @user.role == 'admin' %>
+			<p>
+			<%= link_to 'Create new game', :action => 'new' %><br />
+			Tweak the rules, set the goals, and invite people to a public or private game.
+			</p>
+		<% end %>
+		
+	<%= end_bubble_wrap("light_blue","black") %>
+</div>
+</div>

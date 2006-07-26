@@ -1,0 +1,16 @@
+<% # if active item isn't in the first 10, add it to the array of items
+  items = @user.user_items.reload.first(10) 
+%>
+<% items.each do |item| -%>
+	<div style="padding-bottom:4px;">		
+		<img class="<%= "in" if @active_item != item %>active" style="cursor:move;float:left;margin-right:5px;margin-top:5px;" 
+			  id="<%= item.id %>" 
+			  src="/images/item_<%= item.item.id %>.png" width="48" height="48" 
+			  alt="<%= item.item.description %>" />
+			<script type="text/javascript">new Draggable('<%= item.id %>', {revert:true})</script>
+			<span style="vertical-align:middle;"><%= item.uses_left %> uses left.
+			<%= "<b>Active</b>" if item.active? -%></span>
+		</div>
+	<div style="clear:both"></div>
+<% end -%>
+<% if @user.user_items.size > 10 %>(<%= @user.user_items.size - 10 %> more)<% end %>

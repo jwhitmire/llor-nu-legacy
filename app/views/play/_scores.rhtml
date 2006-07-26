@@ -1,0 +1,37 @@
+<div id="container">
+    <div id="action_pane">
+        <%= start_bubble_wrap("blue","black") %>Top 20 Player Scores<%= end_bubble_wrap("blue","black") %>
+		
+    	<%= start_bubble_wrap("light_blue","black") %>
+    	    <% if @rank != nil %>
+                <p>You rank number <%= @rank + 1 %> overall with a net worth of <%= @scores[@rank].total.to_i %>.</p>
+                <p>Check out <a href="http://daybarr.com/playpen/llor.nu.scores/">Mr. Scruff's Leader Board Stats</a>, a project he took on himself.</p>
+            <% end %>
+        
+            <table>
+                <tr>
+                    <th>Rank</th>
+                    <th>Player</th>
+                    <th>Buildings</th>
+                    <th>Cash</th>
+                    <th nowrap>Net Worth</th>
+                </tr>
+
+                <% counter = 1 %>
+                <% @scores[0..19].each do |score| %>
+                <tr>
+                    <td align="right"><%= counter %>.</td>
+                    <td><%= score.user.name %></td>
+                    <td align="right"><%= score.deeds %></td>
+                    <td align="right"><%= score.balance %></td>
+                    <td align="right"><%= score.total.to_i %></td>
+                </tr>
+                <% counter += 1 %>
+                <% end %>
+            </table>
+        <%= end_bubble_wrap("light_blue","black") %>
+    </div>
+</div>	
+<div id="nav_pane">
+	<%= render :partial => '/play/non_scroll_nav' %>
+</div>

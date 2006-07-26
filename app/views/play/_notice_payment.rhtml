@@ -1,0 +1,6 @@
+<% if @session[:balance] %>
+	<% if @session[:balance] < @user.account.balance %>
+		Someone just paid you <%= @user.account.balance - @session[:balance] %> in rent. Good on ya!
+		<% @session[:balance] = @user.account.balance %>
+	<% end %>
+<% end %>

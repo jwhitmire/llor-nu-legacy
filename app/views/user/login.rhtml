@@ -1,0 +1,32 @@
+<div id="container">
+<div id="action_pane">	
+	<%= start_bubble_wrap("blue","black") %>Login<%= end_bubble_wrap("blue","black") %>	
+	<%= start_bubble_wrap("light_blue","black") %>
+				
+    <% if flash['notice'] %>
+	    <%= start_bubble_wrap("pink","light_blue") %>
+				<b><%= flash['notice'] %></b>
+		<%= end_bubble_wrap("pink","light_blue") %>	
+	<% end %>
+	
+	<p>				
+	<%= form_tag login_url %>
+	    <b>Login</b><br />			
+    	<%= text_field "user", "login" %><br />
+    	<b>Password</b><br />
+    	<%= password_field "user", "password" %>
+    	<br />
+    	<%= submit_tag 'Login' %><br />
+	</form>
+	<a href="/join/">New Player Signup</a><br />
+	<a href="/forgot/">Forgot Password</a><br />
+	</p>
+	<%= end_bubble_wrap("light_blue","black") %>
+</div>
+</div>
+<div id="nav_pane">
+	<%= render :partial => 'info' %>
+</div>
+
+
+                                                                                

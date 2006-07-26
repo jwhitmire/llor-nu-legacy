@@ -1,0 +1,16 @@
+        <% @user.user_instance.user_items.each do |item| -%>
+            <% if item.apply_mode == 1 %>
+                <% cssclass = "passive_item" %>
+            <% else %>
+                <% cssclass = "immediate_item" %>
+            <% end %>
+            <div style="float:left;text-align:center;margin-right:5px;">
+        		<img class="<%= cssclass %>"
+        			  id="<%= item.id %>" 
+        			  src="/images/item_<%= item.item.id %>.png" width="48" height="48" 
+        			  alt="<%= item.item.description %>" /><br />
+        	    <span style="font-size:9pt;color:black;"><%= item.uses_left %></span>
+        	</div>
+        			<script type="text/javascript">new Draggable('<%= item.id %>', {revert:true})</script>        			
+        <% end -%>    
+   

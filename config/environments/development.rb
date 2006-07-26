@@ -1,0 +1,11 @@
+require 'active_support/whiny_nil'
+
+
+Dependencies.mechanism                             = :load
+ActionController::Base.consider_all_requests_local = true
+ActionController::Base.perform_caching             = false
+BREAKPOINT_SERVER_PORT = 42531
+config.log_level = :debug
+
+# for now to kill mail attempts
+ActionMailer::Base.delivery_method                 = :test

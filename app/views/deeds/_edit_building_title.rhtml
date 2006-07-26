@@ -1,0 +1,5 @@
+<div id ="fade_me">
+<%= form_remote_tag :update=>"building_title", :loading => "new Effect.Fade('fade_me')", :url => {:action=>"save_building_title", :id => params[:id]}, :html => {:name => "title_edit"} %>
+	<%= text_field "deed", "name", :size => "25" %>
+</form>
+</div>

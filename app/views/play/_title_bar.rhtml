@@ -1,0 +1,21 @@
+<div id="header">
+    <div id="logo">
+        <ul>
+            <li><a href="/"><img id="llor_nu" src="/images/header/llor.nu.png" width="140" height="56" border="0" alt="" /></a></li>
+            <li><img src="/images/header/tag_line.png" width="121" height="56" alt="tag line" /></li>
+        </ul>
+    </div>
+    <div id="title_nav">
+        <ul>
+            <li><a href="/play/"><img src="/images/header/play.png"  width="67" height="31" border="0" alt="play" /></a></li>
+            <% if not @session[:user] %>
+                <li><a href="/login/"><img src="/images/header/login.png" width="78" height="31" border="0" alt="login" /></a></li>
+                <li><a href="/join/"><img src="/images/header/join.png" width="88" height="31" border="0" alt="join" /></a></li>
+            <% end %>
+            <li><a href="http://blog.llor.nu/"><img src="/images/header/blog.png" width="62" border="0" height="31" alt="blog" /></a></li>
+        </ul>
+    </div>
+    <div style="clear:all;"></div>
+</div>
+
+

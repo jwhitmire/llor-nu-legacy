@@ -1,0 +1,19 @@
+
+<%= hidden_field 'form','edit' %>
+<b>Game Name:</b><br /> (your name as it appears to others)<br />
+<%= text_field('user','name') %><br />
+<b>First Name:</b><br /> (remains hidden)<br />
+<%= text_field('user','firstname') %><br />
+<b>Last Name:</b><br /> (remains hidden)<br />
+<%= text_field('user','lastname') %><br />
+<b>Login:</b><br /> (remains hidden)<br />
+<%= text_field('user','login') %><br />
+<b>Email:</b><br /> (remains hidden and is never sold or given away)<br />
+<%= text_field('user','email') %><br />
+
+<b>Password:</b><br /> (remains encrypted)<br />
+<%= password_field('user','password') %><br />
+
+<b>Password Confirmation:</b><br /> (remains encrypted)<br />
+<%= password_field('user','password_confirmation') %><br />
+<%= submit_tag "Join" %><br />
