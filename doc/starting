@@ -1,0 +1,11 @@
+1. Create databases
+2. rake db:schema:load
+3. rake db:migrate
+4. script/server
+5. Signup at http://localhost:3000/join/
+6. In console: 
+	u = User.find(1)
+	u.role='admin'
+	u.save
+7. Refresh http://localhost:3000/instances/choose
+8. Create a game.
