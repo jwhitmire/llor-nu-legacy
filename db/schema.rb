@@ -2,12 +2,13 @@
 # migrations feature of ActiveRecord to incrementally modify your database, and
 # then regenerate this schema definition.
 
-ActiveRecord::Schema.define(:version => 1) do
+ActiveRecord::Schema.define(:version => 2) do
 
   create_table "accounts", :force => true do |t|
     t.column "balance",          :integer,  :limit => 50
     t.column "created_on",       :datetime
     t.column "updated_on",       :datetime
+    t.column "banked",           :integer
     t.column "user_id",          :integer,  :limit => 50, :default => 0, :null => false
     t.column "user_instance_id", :integer
   end
@@ -24,11 +25,13 @@ ActiveRecord::Schema.define(:version => 1) do
     t.column "health",           :integer,  :limit => 50, :default => 14, :null => false
     t.column "name",             :string,   :limit => 50
     t.column "landed_on",        :integer,  :limit => 50, :default => 0
+    t.column "position",         :integer
     t.column "instance_id",      :integer
   end
 
   add_index "deeds", ["property_type_id"], :name => "property_type_id"
   add_index "deeds", ["square_id"], :name => "square_id"
+  add_index "deeds", ["user_id"], :name => "user_id"
 
   create_table "event_types", :force => true do |t|
     t.column "event",       :string,   :limit => 50
@@ -42,6 +45,7 @@ ActiveRecord::Schema.define(:version => 1) do
     t.column "event_type_id",    :integer,  :limit => 50
     t.column "created_on",       :datetime
     t.column "updated_on",       :datetime
+    t.column "instance_id",      :integer
     t.column "user_instance_id", :integer
   end
 
@@ -76,11 +80,12 @@ ActiveRecord::Schema.define(:version => 1) do
   end
 
   create_table "messages", :force => true do |t|
-    t.column "user_id",    :integer,  :limit => 50, :default => 0, :null => false
-    t.column "square_id",  :integer,  :limit => 50
-    t.column "message",    :text
-    t.column "created_on", :datetime
-    t.column "updated_on", :datetime
+    t.column "user_id",     :integer,  :limit => 50, :default => 0, :null => false
+    t.column "square_id",   :integer,  :limit => 50
+    t.column "message",     :text
+    t.column "created_on",  :datetime
+    t.column "updated_on",  :datetime
+    t.column "instance_id", :integer
   end
 
   create_table "payments", :force => true do |t|
@@ -113,6 +118,7 @@ ActiveRecord::Schema.define(:version => 1) do
     t.column "buildings",   :integer,  :limit => 50
     t.column "created_on",  :datetime
     t.column "updated_on",  :datetime
+    t.column "instance_id", :integer
   end
 
   create_table "sessions", :force => true do |t|
@@ -124,15 +130,11 @@ ActiveRecord::Schema.define(:version => 1) do
   add_index "sessions", ["session_id"], :name => "sessions_session_id_index"
 
   create_table "settings", :force => true do |t|
-    t.column "setting",     :string,  :limit => 50
+    t.column "variable",    :string,   :limit => 100
     t.column "value",       :text
     t.column "instance_id", :integer
-  end
-
-  create_table "square_locks", :id => false, :force => true do |t|
-    t.column "square_id",  :integer,  :limit => 50, :default => 0, :null => false
-    t.column "user_id",    :integer,  :limit => 50
-    t.column "created_on", :datetime
+    t.column "created_on",  :datetime
+    t.column "updated_on",  :datetime
   end
 
   create_table "square_types", :force => true do |t|
@@ -148,8 +150,10 @@ ActiveRecord::Schema.define(:version => 1) do
     t.column "created_on",     :datetime
     t.column "updated_on",     :datetime
     t.column "deeds_count",    :integer
-    t.column "instance_id",    :integer
+    t.column "locked_by_id",   :integer
     t.column "locked_at",      :datetime
+    t.column "messages_count", :integer
+    t.column "instance_id",    :integer
   end
 
   add_index "squares", ["position"], :name => "position"
@@ -160,6 +164,7 @@ ActiveRecord::Schema.define(:version => 1) do
     t.column "square_id",   :integer
     t.column "active",      :integer
     t.column "locked_at",   :datetime
+    t.column "deeds_count", :integer
   end
 
   create_table "user_items", :force => true do |t|
@@ -197,6 +202,7 @@ ActiveRecord::Schema.define(:version => 1) do
     t.column "updated_at",      :datetime
     t.column "deleted",         :integer,  :limit => 50, :default => 0
     t.column "delete_after",    :datetime
+    t.column "instance_id",     :integer
   end
 
   create_table "waiters", :force => true do |t|
