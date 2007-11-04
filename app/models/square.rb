@@ -11,7 +11,7 @@ class Square < ActiveRecord::Base
 	# has_deed? depreciated
 	alias deeded? has_deed?
 	def deeded?
-		self.deeds_count>0
+		deeds_count && deeds_count > 0
 	end
 
 	def locked?(user=nil)
@@ -75,8 +75,7 @@ class Square < ActiveRecord::Base
 	def before_save
 		if self.position.nil?
 			begin
-			  mt = Random::MT19937.new(Time.now.to_i % rand(1000000))
-			  self.position = mt.rand(2000000000)+1
+			  self.position = rand(2000000000)+1
 			end until Square.find_by_position(self.position).nil?
 		end
 	end

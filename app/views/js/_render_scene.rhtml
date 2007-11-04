@@ -93,12 +93,11 @@ if not session[:use_js_renderer]
 
 <img style="position:absolute;" src="/images/map.gif" usemap="#halo_map">
 <map name="halo_map">
-<%
-x1 = 12
-y2 = 201
-squares.shift # remove the first square
-squares.each do |square|
-	if square.deeded? #or 1==1 -%>
+<% x1 = 12 %>
+<% y2 = 201 %>
+<% squares.shift %> # remove the first square
+<% squares.each do |square| %>
+	<% if square.deeded? %>
 		<area shape="rect" onmouseover="bubbleShow('<%= square.position %>');" onmouseout="bubbleHide('<%= square.position %>')" coords="<%= x1 %>,0,<%= x1 + 33 %>,<%= y2 %>" href="#">		
 	<% else -%>
 		<area shape="rect" coords="<%= x1 %>,0,<%= x1 + 33 %>,<%= y2 %>" href="#">	
