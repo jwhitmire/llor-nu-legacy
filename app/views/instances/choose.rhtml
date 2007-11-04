@@ -18,7 +18,6 @@
 			<a href="#" onclick="new Effect.BlindDown('settings_<%= instance.id %>');">View Settings</a> <% if UserInstance.check(@user.id,instance.id) %><%= link_to "Continue Playing...", :action => 'join', :id => instance.id %><% else %><%= link_to "Join", :action => 'join', :id => instance.id %><% end %>
 			</p>
 			<div id="settings_<%= instance.id %>" style="display:none;">
-				<%= debug instance.setting.value %>
 				<a href="#" onclick="new Effect.BlindUp('settings_<%= instance.id %>');">Hide Settings</a>
 			</div>
 			<%= end_bubble_wrap("pink","light_blue") %>
