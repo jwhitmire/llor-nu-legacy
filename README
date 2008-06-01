@@ -1,0 +1,19 @@
+Yeah, this is really old code. Not only old, but it's the first app I built with Rails when Rails was something like 0.11.0. Be kind.
+
+GETTING IT RUNNING
+* Make sure you have Rails 1.2.6 - there might be some gems needed too
+* Create the database
+* Run rake db:migrate
+* Run script/server
+* Go to localhost:3000
+* Click the huge JOIN button
+* Signup
+* Run script/console
+* u = User.find :first
+* u.role = "admin"
+* u.save
+* Go to localhost:3000/instances/new
+* Fiddle with the settings and create an instance
+* Go to localhost:3000/instances/choose
+* Join the instance you created.
+* Done.
