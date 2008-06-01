@@ -1,5 +1,5 @@
 class UserController < ApplicationController
-  model   :user
+  #model   :user
   layout  'play'
   
   before_filter :login_required, :except => [:play,:login,:signup,:forgot_password,:password_reset]
@@ -9,9 +9,9 @@ class UserController < ApplicationController
 	end
 	
   def login
-    case @request.method
+    case request.method
       when :post
-      if @session[:user] = User.authenticate(params[:user][:login], params[:user][:password])                
+      if session[:user] = User.authenticate(params[:user][:login], params[:user][:password])                
         # do all the login related stuff        
         flash['notice']  = "Login successful"
         redirect_to :controller => 'instances', :action => "choose"
@@ -24,9 +24,9 @@ class UserController < ApplicationController
   
   def signup
     @user = User.new(params[:user])
-        
-    if @request.post? and @user.save      
-      @session[:user] = User.authenticate(@user.login, params[:user][:password])      
+    
+    if request.post? and @user.save      
+      session[:user] = User.authenticate(@user.login, params[:user][:password])      
       #@user.first_account
       #@user.first_items
             
@@ -36,14 +36,14 @@ class UserController < ApplicationController
   end
   
   def logout
-    @session[:user] = nil
-    @session[:instance_id] = nil
+    session[:user] = nil
+    session[:instance_id] = nil
     flash['notice']  = "You've been logged out. See you next time!"
     redirect_to :action => "login"
   end
   
   def forgot_password
-    if @request.post? and params[:user][:email].length > 0 and params[:user][:login].length > 0
+    if request.post? and params[:user][:email].length > 0 and params[:user][:login].length > 0
       @user = User.find(:first, :conditions => ['email = ? AND login = ?',params[:user][:email],params[:user][:login]])
       if @user.nil?
         flash.now['error']  = "Email or login don't match a valid player."
@@ -54,7 +54,7 @@ class UserController < ApplicationController
           flash['notice']  = "Your password has been reset to #{params[:user][:password]}"
         end
       end
-    elsif @request.post?
+    elsif request.post?
       flash.now['error']  = "Email or login don't match a valid player."    
     end
   end

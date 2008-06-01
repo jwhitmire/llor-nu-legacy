@@ -8,8 +8,9 @@ class Square < ActiveRecord::Base
 	has_many :messages
 	belongs_to :locked_by, :class_name => 'User', :foreign_key => 'locked_by_id'
 		
-	# has_deed? depreciated
-	alias deeded? has_deed?
+	def has_deed?
+	  deeded?
+	end
 	def deeded?
 		deeds_count && deeds_count > 0
 	end

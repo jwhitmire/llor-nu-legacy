@@ -5,7 +5,7 @@ class PlayController < ApplicationController
 	end	
 
 	def payments
-		@user = User.find(@session[:user][:id])
+		@user = User.find(session[:user][:id])
 		if @user		
 			@activity = Payment.recent_activity(@user)
 		else
@@ -39,21 +39,21 @@ class PlayController < ApplicationController
 		  
 		counter = 0
 		@scores.each do |score|
-			if score.user_id == @session[:user][:id]
+			if score.user_id == session[:user][:id]
 				@rank = counter
 			end
 			counter += 1
 		end
 		
-		@user = User.find(@session[:user][:id])
+		@user = User.find(session[:user][:id])
 	end
 
 	def bank		
-		@user = User.find(@session[:user][:id])
+		@user = User.find(session[:user][:id])
 	end
 
 	def minimal
-		@user = User.find(@session[:user][:id])
+		@user = User.find(session[:user][:id])
 		@deed = Deed.find(params[:id])
 		
 		if @user.account.balance > 50
@@ -66,7 +66,7 @@ class PlayController < ApplicationController
 			@deed.save
 			@deed.reload
 		
-			payments = Payment.find(:all, :conditions => ['deed_id = ? AND user_id = ?',@deed.id, @session[:user][:id]])
+			payments = Payment.find(:all, :conditions => ['deed_id = ? AND user_id = ?',@deed.id, session[:user][:id]])
 			@revenue = 0
 			payments.each do |payment|
 				@revenue += payment.amount
@@ -78,7 +78,7 @@ class PlayController < ApplicationController
 		redirect_to :action => 'building', :id => params[:id]
 	end
 	def maximum
-		@user = User.find(@session[:user][:id])
+		@user = User.find(session[:user][:id])
 		@deed = Deed.find(params[:id])
 		
 		total_maintenance_cost = (14 - @deed.health) * 50
@@ -93,7 +93,7 @@ class PlayController < ApplicationController
 			@deed.save
 			@deed.reload
 		
-			payments = Payment.find(:all, :conditions => ['deed_id = ? AND user_id = ?',@deed.id, @session[:user][:id]])
+			payments = Payment.find(:all, :conditions => ['deed_id = ? AND user_id = ?',@deed.id, session[:user][:id]])
 			@revenue = 0
 			payments.each do |payment|
 				@revenue += payment.amount
@@ -106,7 +106,7 @@ class PlayController < ApplicationController
 	end
 	
 	def messages
-		@user = User.find(@session[:user][:id])
+		@user = User.find(session[:user][:id])
 		if params[:id]
 			# get messages for a single square
 			#@messages = Message.find(:all, :conditions => ['square_id = ?',params[:id]], :order => "created_on DESC")
@@ -115,12 +115,12 @@ class PlayController < ApplicationController
 			@message_pages, @messages = paginate :messages, :order_by => "created_on DESC", :per_page => 10
 			#@messages = Message.find(:all, :order => "created_on DESC")
 		end
-	  @session[:last_viewed_message] = [ @session[:last_viewed_message] || 1, @messages.first.id ].max unless @messages.length == 0
+	  session[:last_viewed_message] = [ session[:last_viewed_message] || 1, @messages.first.id ].max unless @messages.length == 0
 	end
 	
 	def drop_message
 		@message = Message.new
-		@message.user_id = @session[:user][:id]
+		@message.user_id = session[:user][:id]
 		@message.message = params[:message]
 		if params[:id]
 			@message.square_id = params[:id]

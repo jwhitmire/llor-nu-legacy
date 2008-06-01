@@ -33,7 +33,7 @@ class User < ActiveRecord::Base
   end
   
   def self.authenticate(login, pass)
-    u = find_first(["login = ?", login])
+    u = find(:first, :conditions => ["login = ?", login])
     return nil if u.nil?
     find(:first,:conditions => ["login = ? AND salted_password = ?", login, salted_password(u.salt, sha1(pass))])
   end  

@@ -1,11 +1,12 @@
 # The filters added to this controller will be run for all controllers in the application.
 # Likewise will all the methods added be available for all controllers.
 require_dependency "login_system"
+
 class ApplicationController < ActionController::Base  
     include LoginSystem
     
   	helper :user
-  	model  :user # do not remove - Dreamer3
+  	#model  :user # do not remove - Dreamer3
 
 	#before_filter :game_down
 	

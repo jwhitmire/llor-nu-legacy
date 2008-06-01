@@ -95,7 +95,7 @@ if not session[:use_js_renderer]
 <map name="halo_map">
 <% x1 = 12 %>
 <% y2 = 201 %>
-<% squares.shift %> # remove the first square
+<% squares.shift %>
 <% squares.each do |square| %>
 	<% if square.deeded? %>
 		<area shape="rect" onmouseover="bubbleShow('<%= square.position %>');" onmouseout="bubbleHide('<%= square.position %>')" coords="<%= x1 %>,0,<%= x1 + 33 %>,<%= y2 %>" href="#">		

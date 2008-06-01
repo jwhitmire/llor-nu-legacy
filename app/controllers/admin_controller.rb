@@ -48,7 +48,7 @@ class AdminController < ApplicationController
    	
    	## THIS TRUNCATING BUSINESS IS ALL BROKEN DUE TO INSTANCES ###
    	   				
-   		## remove all found items
+   		# remove all found items
    		#ActiveRecord::Base.connection.execute('TRUNCATE TABLE user_items')
    		## remove all square locks
    		##ActiveRecord::Base.connection.execute('TRUNCATE TABLE square_locks')
@@ -60,9 +60,9 @@ class AdminController < ApplicationController
    		## remove all squares
    		#ActiveRecord::Base.connection.execute('TRUNCATE TABLE squares')
    		#ActiveRecord::Base.connection.execute('TRUNCATE TABLE messages')
-   	  #
+   	  
    		#Account.starting_balance
-   	  #UserItems.first_items   	
+   	  #UserItem.first_items
    		#Square.first_squares   		
    	  #User.first_positions
    	else

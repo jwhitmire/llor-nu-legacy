@@ -8,7 +8,7 @@
     <div id="title_nav">
         <ul>
             <li><a href="/play/"><img src="/images/header/play.png"  width="67" height="31" border="0" alt="play" /></a></li>
-            <% if not @session[:user] %>
+            <% if not session[:user] %>
                 <li><a href="/login/"><img src="/images/header/login.png" width="78" height="31" border="0" alt="login" /></a></li>
                 <li><a href="/join/"><img src="/images/header/join.png" width="88" height="31" border="0" alt="join" /></a></li>
             <% end %>

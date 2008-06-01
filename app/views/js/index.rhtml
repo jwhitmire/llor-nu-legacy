@@ -83,7 +83,7 @@
 	</div>
 	<div id="status_area">
 			<div id="roll_nav">
-				<% number = @session[:roll] || 5 -%>
+				<% number = session[:roll] || 5 -%>
 				<% if @user.user_instance.account.balance > 0 -%>
 				    <div id="die"><a href="#" onclick="roll();"><img src="/images/<%= number %>.gif" width="49" height="44" border="0" alt="Roll" /></a></div>
 				<% end -%>
@@ -123,6 +123,6 @@
             <%= @god_message.message %>
         <% end %>
     <% if @user %>
-        <p>Currently playing with <%= number_with_delimiter(@user.class.currently_playing) %> other users.</p>
+        <p>Currently playing with <%#= number_with_delimiter(@user.class.currently_playing) %> other users.</p>
     <% end %>
 <%= end_bubble_wrap("light_blue","black") %>

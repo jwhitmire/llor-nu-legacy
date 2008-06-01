@@ -16,7 +16,7 @@ class InstancesController < ApplicationController
     redirect_to :controller => 'js', :action => 'index'
   end
   def new
-    @user = User.find(@session[:user][:id])
+    @user = User.find(session[:user][:id])
   end
   def create
     @user = User.find(session[:user][:id])
