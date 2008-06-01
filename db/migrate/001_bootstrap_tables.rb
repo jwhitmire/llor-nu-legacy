@@ -1,28 +1,28 @@
 class BootstrapTables < ActiveRecord::Migration
   def self.up
     create_table "accounts", :force => true do |t|
-      t.column "balance",          :integer,  :limit => 50
-      t.column "created_on",       :datetime
-      t.column "updated_on",       :datetime
-      t.column "banked",           :integer
-      t.column "user_id",          :integer,  :limit => 50, :default => 0, :null => false
-      t.column "user_instance_id", :integer
+      t.integer  "balance",          :limit => 11, :default => 0
+      t.datetime "created_on"
+      t.datetime "updated_on"
+      t.integer  "banked",           :limit => 11
+      t.integer  "user_id",          :limit => 11, :default => 0, :null => false
+      t.integer  "user_instance_id", :limit => 11
     end
 
     add_index "accounts", ["user_id"], :name => "user_id"
 
     create_table "deeds", :force => true do |t|
-      t.column "property_type_id", :integer,  :limit => 50
-      t.column "user_id",          :integer,  :limit => 50
-      t.column "created_on",       :datetime
-      t.column "updated_on",       :datetime
-      t.column "square_id",        :integer,  :limit => 50
-      t.column "levels",           :integer,  :limit => 50
-      t.column "health",           :integer,  :limit => 50, :default => 14, :null => false
-      t.column "name",             :string,   :limit => 50
-      t.column "landed_on",        :integer,  :limit => 50, :default => 0
-      t.column "position",         :integer
-      t.column "instance_id",      :integer
+      t.integer  "property_type_id", :limit => 11
+      t.integer  "user_id",          :limit => 11
+      t.datetime "created_on"
+      t.datetime "updated_on"
+      t.integer  "square_id",        :limit => 11
+      t.integer  "levels",           :limit => 11
+      t.integer  "health",           :limit => 11, :default => 14, :null => false
+      t.string   "name",             :limit => 50
+      t.integer  "landed_on",        :limit => 11, :default => 0
+      t.integer  "position",         :limit => 11
+      t.integer  "instance_id",      :limit => 11
     end
 
     add_index "deeds", ["property_type_id"], :name => "property_type_id"
@@ -30,180 +30,180 @@ class BootstrapTables < ActiveRecord::Migration
     add_index "deeds", ["user_id"], :name => "user_id"
 
     create_table "event_types", :force => true do |t|
-      t.column "event",       :string,   :limit => 50
-      t.column "description", :string,   :limit => 50
-      t.column "created_on",  :datetime
-      t.column "updated_on",  :datetime
+      t.string   "event",       :limit => 50
+      t.string   "description", :limit => 50
+      t.datetime "created_on"
+      t.datetime "updated_on"
     end
 
     create_table "events", :force => true do |t|
-      t.column "user_id",          :integer,  :limit => 50
-      t.column "event_type_id",    :integer,  :limit => 50
-      t.column "created_on",       :datetime
-      t.column "updated_on",       :datetime
-      t.column "instance_id",      :integer
-      t.column "user_instance_id", :integer
+      t.integer  "user_id",          :limit => 11
+      t.integer  "event_type_id",    :limit => 11
+      t.datetime "created_on"
+      t.datetime "updated_on"
+      t.integer  "instance_id",      :limit => 11
+      t.integer  "user_instance_id", :limit => 11
     end
 
     add_index "events", ["user_id"], :name => "user_id"
 
     create_table "god_messages", :force => true do |t|
-      t.column "message",     :text
-      t.column "instance_id", :integer
-      t.column "created_on",  :datetime
-      t.column "updated_on",  :datetime
+      t.text     "message"
+      t.integer  "instance_id", :limit => 11
+      t.datetime "created_on"
+      t.datetime "updated_on"
     end
 
     create_table "instance_users", :id => false, :force => true do |t|
-      t.column "user_id",     :integer
-      t.column "instance_id", :integer
-      t.column "created_on",  :datetime
-      t.column "updated_on",  :datetime
+      t.integer  "user_id",     :limit => 11
+      t.integer  "instance_id", :limit => 11
+      t.datetime "created_on"
+      t.datetime "updated_on"
     end
 
     create_table "instances", :force => true do |t|
-      t.column "name",        :string,   :limit => 100
-      t.column "user_id",     :integer
-      t.column "created_on",  :datetime
-      t.column "updated_on",  :datetime
-      t.column "description", :text
+      t.string   "name",        :limit => 100
+      t.integer  "user_id",     :limit => 11
+      t.datetime "created_on"
+      t.datetime "updated_on"
+      t.text     "description"
     end
 
     create_table "items", :force => true do |t|
-      t.column "description", :string
-      t.column "created_on",  :datetime
-      t.column "updated_on",  :datetime
+      t.string   "description"
+      t.datetime "created_on"
+      t.datetime "updated_on"
     end
 
-    create_table "messages",  :force => true do |t|
-      t.column "user_id",     :integer,  :limit => 50, :default => 0, :null => false
-      t.column "square_id",   :integer,  :limit => 50
-      t.column "message",     :text
-      t.column "created_on",  :datetime
-      t.column "updated_on",  :datetime
-      t.column "instance_id", :integer
+    create_table "messages", :force => true do |t|
+      t.integer  "user_id",     :limit => 11, :default => 0, :null => false
+      t.integer  "square_id",   :limit => 11
+      t.text     "message"
+      t.datetime "created_on"
+      t.datetime "updated_on"
+      t.integer  "instance_id", :limit => 11
     end
 
     create_table "payments", :force => true do |t|
-      t.column "amount",     :integer,  :limit => 50, :default => 0, :null => false
-      t.column "user_id",    :integer,  :limit => 50
-      t.column "event_id",   :integer,  :limit => 50
-      t.column "deed_id",    :integer,  :limit => 50
-      t.column "created_on", :datetime
-      t.column "updated_on", :datetime
+      t.integer  "amount",     :limit => 11, :default => 0, :null => false
+      t.integer  "user_id",    :limit => 11
+      t.integer  "event_id",   :limit => 11
+      t.integer  "deed_id",    :limit => 11
+      t.datetime "created_on"
+      t.datetime "updated_on"
     end
 
     create_table "property_types", :force => true do |t|
-      t.column "title",          :string,   :limit => 50
-      t.column "description",    :string
-      t.column "base_price",     :integer,  :limit => 50, :default => 0, :null => false
-      t.column "min_level",      :integer,  :limit => 50, :default => 0, :null => false
-      t.column "created_on",     :datetime
-      t.column "updated_on",     :datetime
-      t.column "base_rent",      :integer,  :limit => 50
-      t.column "max_levels",     :integer,  :limit => 50
-      t.column "level_cost",     :integer,  :limit => 50
-      t.column "level_modifier", :integer,  :limit => 50
-      t.column "position",       :integer,  :limit => 50
+      t.string   "title",          :limit => 50
+      t.string   "description"
+      t.integer  "base_price",     :limit => 11, :default => 0, :null => false
+      t.integer  "min_level",      :limit => 11, :default => 0, :null => false
+      t.datetime "created_on"
+      t.datetime "updated_on"
+      t.integer  "base_rent",      :limit => 11
+      t.integer  "max_levels",     :limit => 11
+      t.integer  "level_cost",     :limit => 11
+      t.integer  "level_modifier", :limit => 11
+      t.integer  "position",       :limit => 11
     end
 
     create_table "scores", :force => true do |t|
-      t.column "user_id",     :integer,  :limit => 50, :default => 0, :null => false
-      t.column "cash",        :integer,  :limit => 50
-      t.column "real_estate", :integer,  :limit => 50
-      t.column "buildings",   :integer,  :limit => 50
-      t.column "created_on",  :datetime
-      t.column "updated_on",  :datetime
-      t.column "instance_id", :integer
+      t.integer  "user_id",     :limit => 11, :default => 0, :null => false
+      t.integer  "cash",        :limit => 11
+      t.integer  "real_estate", :limit => 11
+      t.integer  "buildings",   :limit => 11
+      t.datetime "created_on"
+      t.datetime "updated_on"
+      t.integer  "instance_id", :limit => 11
     end
 
     create_table "sessions", :force => true do |t|
-      t.column "session_id", :string
-      t.column "data",       :text
-      t.column "updated_at", :datetime
+      t.string   "session_id"
+      t.text     "data"
+      t.datetime "updated_at"
     end
 
     add_index "sessions", ["session_id"], :name => "sessions_session_id_index"
 
     create_table "settings", :force => true do |t|
-      t.column "variable",     :string,  :limit => 100
-      t.column "value",       :text
-      t.column "instance_id", :integer
-      t.column "created_on",  :datetime
-      t.column "updated_on",  :datetime
+      t.string   "variable",    :limit => 100
+      t.text     "value"
+      t.integer  "instance_id", :limit => 11
+      t.datetime "created_on"
+      t.datetime "updated_on"
     end
 
     create_table "square_types", :force => true do |t|
-      t.column "description", :string,   :limit => 100
-      t.column "for_sale",    :boolean,                 :default => false
-      t.column "created_on",  :datetime
-      t.column "updated_on",  :datetime
+      t.string   "description", :limit => 100
+      t.boolean  "for_sale",                   :default => false
+      t.datetime "created_on"
+      t.datetime "updated_on"
     end
 
     create_table "squares", :force => true do |t|
-      t.column "square_type_id", :integer,  :limit => 50
-      t.column "position",       :integer,  :limit => 50
-      t.column "created_on",     :datetime
-      t.column "updated_on",     :datetime
-      t.column "deeds_count",    :integer
-      t.column "locked_by_id",  :integer
-      t.column "locked_at",      :datetime
-      t.column "messages_count", :integer
-      t.column "instance_id",    :integer
+      t.integer  "square_type_id", :limit => 11
+      t.integer  "position",       :limit => 11
+      t.datetime "created_on"
+      t.datetime "updated_on"
+      t.integer  "deeds_count",    :limit => 11, :default => 0
+      t.integer  "locked_by_id",   :limit => 11
+      t.datetime "locked_at"
+      t.integer  "messages_count", :limit => 11, :default => 0
+      t.integer  "instance_id",    :limit => 11
     end
 
     add_index "squares", ["position"], :name => "position"
 
     create_table "user_instances", :force => true do |t|
-      t.column "user_id",     :integer
-      t.column "instance_id", :integer
-      t.column "square_id",   :integer
-      t.column "active",      :integer
-      t.column "locked_at",   :datetime
-      t.column "deeds_count", :integer
+      t.integer  "user_id",     :limit => 11
+      t.integer  "instance_id", :limit => 11
+      t.integer  "square_id",   :limit => 11
+      t.integer  "active",      :limit => 11
+      t.datetime "locked_at"
+      t.integer  "deeds_count", :limit => 11, :default => 0
     end
 
     create_table "user_items", :force => true do |t|
-      t.column "user_id",          :integer,  :limit => 50
-      t.column "item_id",          :string,   :limit => 50
-      t.column "uses_left",        :integer,  :limit => 50
-      t.column "active",           :integer,  :limit => 2,  :default => 0, :null => false
-      t.column "created_on",       :datetime
-      t.column "updated_on",       :datetime
-      t.column "user_instance_id", :integer
-      t.column "apply_mode",       :integer
+      t.integer  "user_id",          :limit => 11
+      t.string   "item_id",          :limit => 50
+      t.integer  "uses_left",        :limit => 11
+      t.integer  "active",           :limit => 2,  :default => 0, :null => false
+      t.datetime "created_on"
+      t.datetime "updated_on"
+      t.integer  "user_instance_id", :limit => 11
+      t.integer  "apply_mode",       :limit => 11
     end
 
     add_index "user_items", ["id"], :name => "id"
 
     create_table "users", :force => true do |t|
-      t.column "login",           :string,   :limit => 80, :default => "", :null => false
-      t.column "salted_password", :string,   :limit => 40, :default => "", :null => false
-      t.column "email",           :string,   :limit => 60, :default => "", :null => false
-      t.column "name",            :string,   :limit => 50
-      t.column "square_id",       :integer,  :limit => 50, :default => 1,  :null => false
-      t.column "created_on",      :datetime
-      t.column "updated_on",      :datetime
-      t.column "test",            :string,   :limit => 50
-      t.column "turns",           :integer,  :limit => 50, :default => 20, :null => false
-      t.column "firstname",       :string,   :limit => 40
-      t.column "lastname",        :string,   :limit => 40
-      t.column "salt",            :string,   :limit => 40
-      t.column "verified",        :integer,  :limit => 50, :default => 0
-      t.column "role",            :string,   :limit => 40
-      t.column "security_token",  :string,   :limit => 40
-      t.column "token_expiry",    :datetime
-      t.column "logged_in_at",    :datetime
-      t.column "created_at",      :datetime
-      t.column "updated_at",      :datetime
-      t.column "deleted",         :integer,  :limit => 50, :default => 0
-      t.column "delete_after",    :datetime
-      t.column "instance_id",     :integer
+      t.string   "login",           :limit => 80, :default => "", :null => false
+      t.string   "salted_password", :limit => 40, :default => "", :null => false
+      t.string   "email",           :limit => 60, :default => "", :null => false
+      t.string   "name",            :limit => 50
+      t.integer  "square_id",       :limit => 11, :default => 1,  :null => false
+      t.datetime "created_on"
+      t.datetime "updated_on"
+      t.string   "test",            :limit => 50
+      t.integer  "turns",           :limit => 11, :default => 20, :null => false
+      t.string   "firstname",       :limit => 40
+      t.string   "lastname",        :limit => 40
+      t.string   "salt",            :limit => 40
+      t.integer  "verified",        :limit => 11, :default => 0
+      t.string   "role",            :limit => 40
+      t.string   "security_token",  :limit => 40
+      t.datetime "token_expiry"
+      t.datetime "logged_in_at"
+      t.datetime "created_at"
+      t.datetime "updated_at"
+      t.integer  "deleted",         :limit => 11, :default => 0
+      t.datetime "delete_after"
+      t.integer  "instance_id",     :limit => 11
     end
 
     create_table "waiters", :force => true do |t|
-      t.column "email",      :string,   :limit => 200
-      t.column "created_on", :datetime
+      t.string   "email",      :limit => 200
+      t.datetime "created_on"
     end
   end
 

@@ -12,7 +12,7 @@
 ActiveRecord::Schema.define(:version => 2) do
 
   create_table "accounts", :force => true do |t|
-    t.integer  "balance",          :limit => 11
+    t.integer  "balance",          :limit => 11, :default => 0
     t.datetime "created_on"
     t.datetime "updated_on"
     t.integer  "banked",           :limit => 11
@@ -156,10 +156,10 @@ ActiveRecord::Schema.define(:version => 2) do
     t.integer  "position",       :limit => 11
     t.datetime "created_on"
     t.datetime "updated_on"
-    t.integer  "deeds_count",    :limit => 11
+    t.integer  "deeds_count",    :limit => 11, :default => 0
     t.integer  "locked_by_id",   :limit => 11
     t.datetime "locked_at"
-    t.integer  "messages_count", :limit => 11
+    t.integer  "messages_count", :limit => 11, :default => 0
     t.integer  "instance_id",    :limit => 11
   end
 
@@ -171,7 +171,7 @@ ActiveRecord::Schema.define(:version => 2) do
     t.integer  "square_id",   :limit => 11
     t.integer  "active",      :limit => 11
     t.datetime "locked_at"
-    t.integer  "deeds_count", :limit => 11
+    t.integer  "deeds_count", :limit => 11, :default => 0
   end
 
   create_table "user_items", :force => true do |t|
