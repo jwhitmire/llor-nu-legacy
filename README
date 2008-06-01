@@ -14,6 +14,7 @@ GETTING IT RUNNING
 * u.save
 * Go to localhost:3000/instances/new
 * Fiddle with the settings and create an instance
+* Make sure you enter settings for all numeric fields (nil default causes issues)
 * Go to localhost:3000/instances/choose
 * Join the instance you created.
 * Done.
