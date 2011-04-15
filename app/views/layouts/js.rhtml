@@ -12,6 +12,6 @@
     </head>
     <body onload="preloadImages();" bgcolor="black">
     <%= render :partial => 'play/title_bar' %>
-    <div id="x"><%= @content_for_layout %></div>
+    <div id="x"><%= yield %></div>
     </body>
 </html>

@@ -1,5 +1,5 @@
 	<%= start_bubble_wrap("light_blue","black") %>
-		<div id="actual_message"><%= session[:messages] %></div>
+		<div id="actual_message"><%= session[:messages].html_safe %></div>
 	<%= end_bubble_wrap("light_blue","black") %>
 
 

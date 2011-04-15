@@ -44,7 +44,7 @@ if not session[:use_js_renderer]
 							<% end -%>
 							<br />Owned by: <%= square.deed.user.name %><br />
 							Rent: <%= rent_calc(square.deed.property_type,square.deed.levels)  %><br />
-							Position: <%= number_with_precision(square.percentage_position,2)  %>%
+							Position: <%= square.percentage_position  %>%
 						</td>
 					</tr>
 				</table>
@@ -58,7 +58,7 @@ if not session[:use_js_renderer]
 					<tr>
 						<td><img src="/images/dot.gif" style="height:68px;width:1px;"></td>
 						<td style="text-align:center;">							
-							Position: <%= number_with_precision(square.percentage_position,2) %>%
+							Position: <%= square.percentage_position %>%
 						</td>
 					</tr>
 				</table>

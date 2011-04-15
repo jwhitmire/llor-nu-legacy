@@ -6,7 +6,7 @@
 				<div style="margin-bottom:10px;"><%= flash['safe'] %></div>
 			<% end %>
 			<% if flash['build'] %>				
-				<div style="margin-bottom:10px;">You can buy and <%= link_to_remote "build", :update => "action_window", :url => {:action=> 'build'} %> on this property.</div>
+				<div style="margin-bottom:10px;">You can buy and <%= link_to "build", :update => "action_window", :url => {:action=> 'build'} %> on this property.</div>
 			<% end %>
 			<% if flash['locked'] %>				
 				<div style="margin-bottom:10px;"><%= flash['locked'] %></div>
@@ -32,7 +32,7 @@
 <% elsif @user.square.deed == nil and @user.square.square_type.id == 3 %>
 	<div class="roundedDiv">
 	<div class="header"><ul><li><img src="/images/dot.gif" height="8" width="1"></li></ul></div>
-	<div id="content">You can buy and <%= link_to_remote "build", :update => "action_window", :url => {:controller=> 'play',:action=> 'build'} %> on this property.</div>
+	<div id="content">You can buy and <%= link_to "build", :update => "action_window", :url => {:controller=> 'play',:action=> 'build'} %> on this property.</div>
 	<div class="footer"><ul><li><img src="/images/dot.gif" height="8" width="1"></li></ul></div>
 </div>
 <% else %>

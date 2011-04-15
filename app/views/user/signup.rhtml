@@ -13,10 +13,10 @@
 					<p>Due to overwhelming signups, the beta has been closed for at least a day. Check <a href="http://blog.llor.nu">the blog</a> for status.</p>
 			      <% if params[:sneaky] %>
 						<p>You're being sneaky. Don't leak the URL.</p>					
-						<%= render_partial 'edit', :user => @user, :submit => false %>
+						<%= render :partial => 'edit', :user => @user, :submit => false %>
 					<% end %></br>
 				<% else %>
-					<div class="user_form"><%= render_partial 'edit', :user => @user, :submit => false %></div>
+					<div class="user_form"><%= render :partial => 'edit', :user => @user, :submit => false %></div>
 				<% end %>
 				</form>
 	<%= end_bubble_wrap("light_blue","black") %>

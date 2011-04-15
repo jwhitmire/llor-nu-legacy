@@ -83,12 +83,12 @@
 					</td>
 					<td>
 						<% if deed.levels < counter and @user.user_instance.account.balance >= deed.cost_to_upgrade(counter-1) %>						
-							<%= link_to_remote "Buy",  :update => "action_pane", :url => {:action=> 'upgrade', :id => deed.id, :levels => counter-deed.levels}, :oncomplete => "$('actual_message').innerHTML = '#{session[:messages]}'" %>
+							<%= link_to "Buy",  :update => "action_pane", :url => {:action=> 'upgrade', :id => deed.id, :levels => counter-deed.levels}, :oncomplete => "$('actual_message').innerHTML = '#{session[:messages]}'" %>
 						<% elsif counter==1 %>
 							<%= link_to "Sell", {:action=> 'sell', :id => deed.id, :levels => deed.levels-counter+1 } %>
 						
 						<% elsif deed.levels >= counter and deed.levels > 1 %>
-							<%= link_to_remote "Sell", :update => "action_pane", :url => {:action=> 'sell', :id => deed.id, :levels => deed.levels-counter+1 } %>
+							<%= link_to "Sell", :update => "action_pane", :url => {:action=> 'sell', :id => deed.id, :levels => deed.levels-counter+1 } %>
 						<% end %>
 					</td>
 				<% elsif counter == max_affordable_levels+2 %>

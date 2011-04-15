@@ -4,7 +4,7 @@
 	
 	<%= start_bubble_wrap("light_blue","black") %>			
 		<%= start_bubble_wrap("scarlet","light_blue") %>
-		    <b>Hotel Types: <% 1..4.times do |i| %><% i += 1 %><%= link_to_remote i, :update=> "x",:loading=>'action_window_up()', :complete => 'action_window_down()', :url => {:action => "build", :page=>i} %> <% end %></b>
+		    <b>Hotel Types: <% 1..4.times do |i| %><% i += 1 %><%= link_to i, :update=> "x", :loading=>'action_window_up()', :complete => 'action_window_down()', :url => {:action => "build", :page=>i} %> <% end %></b>
 		<%= end_bubble_wrap("scarlet","light_blue") %>				
 		<div id="building_details">
 		    <% property = @properties[0] %>

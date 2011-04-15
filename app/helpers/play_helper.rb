@@ -11,7 +11,7 @@ module PlayHelper
 			returning html = '' do
 				if options[:always_show_anchors] and not window_pages[0].first?
 					#html << link_to(first.number, options[:name] => first)
-					html << link_to_remote(first.number, :update => options[:element_name], :url => { :action => options[:action], :page => first })
+					html << link_to (first.number, :update => options[:element_name], :url => { :action => options[:action], :page => first })
 					html << ' ... ' if window_pages[0].number - first.number > 1
 					html << ' '
 				end
@@ -21,7 +21,7 @@ module PlayHelper
 						html << page.number.to_s
 					else
 						#html << link_to(page.number, options[:name] => page)
-						html << link_to_remote(page.number, :update => options[:element_name], :loading => options[:loading], :complete => options[:complete], :url => { :action => options[:action], :page => page })
+						html << link_to (page.number, :update => options[:element_name], :loading => options[:loading], :complete => options[:complete], :url => { :action => options[:action], :page => page })
 					end
 				html << ' '
 			end
@@ -29,7 +29,7 @@ module PlayHelper
 			if options[:always_show_anchors] && !window_pages.last.last?
 				html << ' ... ' if last.number - window_pages[-1].number > 1
 				#html << link_to(paginator.last.number, options[:name] => last)
-				html << link_to_remote(last.number, :update => options[:element_name], :url => { :action => options[:action], :page => last })
+				html << link_to (last.number, :update => options[:element_name], :url => { :action => options[:action], :page => last })
 			end
 		end
 	end
@@ -64,7 +64,7 @@ module PlayHelper
 			html << "</div>"
 		end
 		
-		return html
+		return html.html_safe
 	end
 	def draw_building_top(levels,type,boss_top,id=nil)
 		top = -42
@@ -96,6 +96,6 @@ module PlayHelper
 			html << "</div>"
 		end
 		
-		return html
+		return html.html_safe
 	end
 end

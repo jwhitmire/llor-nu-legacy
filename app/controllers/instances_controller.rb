@@ -22,7 +22,7 @@ class InstancesController < ApplicationController
     @user = User.find(session[:user][:id])
     if @user.role == 'admin' # kevin is sneaky
       null=nil
-      parsed_settings = JSON.parse(params[:packet]) #eval(params[:packet].gsub(/(["'])\s*:\s*(['"0-9tfn\[{])/){"#{$1}=>#{$2}"})
+      parsed_settings = ActiveSupport::JSON.decode(params[:packet]) #eval(params[:packet].gsub(/(["'])\s*:\s*(['"0-9tfn\[{])/){"#{$1}=>#{$2}"})
     
       instance = Instance.create(:user_id => session[:user][:id], :name => params[:name], :description => params[:description])    
       Setting.create(:value => parsed_settings, :instance_id => instance.id)
