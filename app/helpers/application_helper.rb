@@ -80,17 +80,19 @@ module ApplicationHelper
 	    id_string = ""
 	  end
 	  
-	  <<-YOINK
+	  html = <<-YOINK
 	  <div class="#{foreground_color}_on_#{background_color}_wrapper" #{id_string}>
 		  <div class="#{foreground_color}_on_#{background_color}_header"><ul><li>&nbsp;</li></ul></div>
 			<div id="content">
 	  YOINK
+	  html.html_safe
 	end
   def end_bubble_wrap(foreground_color,background_color)
-    <<-YOINK
+    html = <<-YOINK
 	  </div>
 	  <div class="#{foreground_color}_on_#{background_color}_footer"><ul><li>&nbsp;</li></ul></div>
 	  </div>
 	  YOINK
+	  html.html_safe
   end
 end
