@@ -1,6 +1,6 @@
 # Be sure to restart your server when you modify this file.
 
-DefaultRails3::Application.config.session_store :cookie_store, :key => '_default_rails_3_session'
+Unroll::Application.config.session_store :cookie_store, :key => '_unroll_session'
 
 # Use the database for sessions instead of the cookie-based default,
 # which shouldn't be used to store highly confidential information
