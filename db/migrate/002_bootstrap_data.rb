@@ -20,11 +20,11 @@ class BootstrapData < ActiveRecord::Migration
     execute "INSERT INTO property_types VALUES (3,'Three Star Hotel','What most people expect out of a hotel. Coordinated pastel scenes above color coordinated beds.',3600,0,'2005-07-23 22:53:00','2005-07-23 22:55:03',300,25,3000,30,3);"
     execute "INSERT INTO property_types VALUES (4,'Super Insane Hotel','Perfection all around, this hotel commands the highest prices at the highest levels.',33000,0,NULL,NULL,900,30,36000,40,4);"
     
-    execute "INSERT INTO square_types VALUES (1,'Game Owned',0,'2005-07-23 22:56:00','2005-07-23 22:56:55');"
-    execute "INSERT INTO square_types VALUES (2,'Player Owned',0,'2005-07-23 22:56:00','2005-07-23 22:57:07');"
-    execute "INSERT INTO square_types VALUES (3,'Empty, Buyable',1,'2005-07-23 22:57:00','2005-07-23 22:57:19');"
-    execute "INSERT INTO square_types VALUES (4,'Dead Space',0,'2005-07-23 22:57:00','2005-07-23 22:57:33');"
-    execute "INSERT INTO square_types VALUES (5,'Quicky',0,NULL,NULL);"
+    execute "INSERT INTO square_types VALUES (1,'Game Owned',false,'2005-07-23 22:56:00','2005-07-23 22:56:55');"
+    execute "INSERT INTO square_types VALUES (2,'Player Owned',false,'2005-07-23 22:56:00','2005-07-23 22:57:07');"
+    execute "INSERT INTO square_types VALUES (3,'Empty, Buyable',true,'2005-07-23 22:57:00','2005-07-23 22:57:19');"
+    execute "INSERT INTO square_types VALUES (4,'Dead Space',false,'2005-07-23 22:57:00','2005-07-23 22:57:33');"
+    execute "INSERT INTO square_types VALUES (5,'Quicky',false,NULL,NULL);"
   end
 
   def self.down
