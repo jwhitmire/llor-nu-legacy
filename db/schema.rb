@@ -36,10 +36,6 @@ ActiveRecord::Schema.define(:version => 2) do
     t.integer  "instance_id",      :limit => 11
   end
 
-  add_index "deeds", ["property_type_id"], :name => "property_type_id"
-  add_index "deeds", ["square_id"], :name => "square_id"
-  add_index "deeds", ["user_id"], :name => "user_id"
-
   create_table "event_types", :force => true do |t|
     t.string   "event",       :limit => 50
     t.string   "description", :limit => 50
@@ -55,8 +51,6 @@ ActiveRecord::Schema.define(:version => 2) do
     t.integer  "instance_id",      :limit => 11
     t.integer  "user_instance_id", :limit => 11
   end
-
-  add_index "events", ["user_id"], :name => "user_id"
 
   create_table "god_messages", :force => true do |t|
     t.text     "message"
@@ -134,8 +128,6 @@ ActiveRecord::Schema.define(:version => 2) do
     t.datetime "updated_at"
   end
 
-  add_index "sessions", ["session_id"], :name => "sessions_session_id_index"
-
   create_table "settings", :force => true do |t|
     t.string   "variable",    :limit => 100
     t.text     "value"
@@ -163,8 +155,6 @@ ActiveRecord::Schema.define(:version => 2) do
     t.integer  "instance_id",    :limit => 11
   end
 
-  add_index "squares", ["position"], :name => "position"
-
   create_table "user_instances", :force => true do |t|
     t.integer  "user_id",     :limit => 11
     t.integer  "instance_id", :limit => 11
@@ -184,8 +174,6 @@ ActiveRecord::Schema.define(:version => 2) do
     t.integer  "user_instance_id", :limit => 11
     t.integer  "apply_mode",       :limit => 11
   end
-
-  add_index "user_items", ["id"], :name => "id"
 
   create_table "users", :force => true do |t|
     t.string   "login",           :limit => 80, :default => "", :null => false
